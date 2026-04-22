@@ -329,6 +329,10 @@ main {
 a.doi { font-family: var(--font-mono); font-size: 11px; color: var(--accent); text-decoration: none; }
 a.doi:hover { text-decoration: underline; }
 
+/* ── ORCiD LINKS ── */
+a.orcid { font-family: var(--font-mono); font-size: 11px; color: var(--accent); text-decoration: none; }
+a.orcid:hover { text-decoration: underline; }
+
 /* ── SCROLLBAR ── */
 ::-webkit-scrollbar { width: 5px; height: 5px; }
 ::-webkit-scrollbar-track { background: transparent; }
