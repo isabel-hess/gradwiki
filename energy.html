@@ -58,7 +58,7 @@
 
   <!-- THEORY -->
   <section class="wiki-section" id="hasel-theory">
-    <div class="section-header"><div class="section-icon icon-green">⚡</div><div><div class="section-title">Theory of Operation</div><div class="section-subtitle">CCW constant-voltage generation cycle from variable capacitance</div></div></div>
+    <div class="section-header"><div class="section-icon icon-blue">⚡</div><div><div class="section-title">Theory of Operation</div><div class="section-subtitle">CCW constant-voltage generation cycle from variable capacitance</div></div></div>
     <div class="section-divider"></div>
     <div class="prose">HASEL actuators are variable capacitors — zipping increases capacitance. In generation mode: <strong>prime</strong> at high capacitance (zipped), then allow the electrodes to unzip at constant voltage, reducing capacitance and ejecting charge to a storage element. This forms a <strong>counterclockwise (CCW) isopotential loop</strong> in the Q–V plane.</div>
     <h4 style="font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--text-muted);font-family:var(--font-mono);margin-bottom:10px;">Generation Cycle</h4>
@@ -96,7 +96,7 @@
 
   <!-- CIRCUIT -->
   <section class="wiki-section" id="hasel-circuit">
-    <div class="section-header"><div class="section-icon icon-green">🔌</div><div><div class="section-title">Circuit Design</div><div class="section-subtitle">Adapted from Duranti (2017) dielectric fluid transducer circuit</div></div></div>
+    <div class="section-header"><div class="section-icon icon-blue">🔌</div><div><div class="section-title">Circuit Design</div><div class="section-subtitle">Adapted from Duranti (2017) dielectric fluid transducer circuit</div></div></div>
     <div class="section-divider"></div>
     <div class="prose">High-voltage reed relays switch between priming (from storage capacitor C_p), generation (onto C_p), and discharge phases. The Pico Electronics 5VV10-P provides 2000× HV amplification. Architecture adapted from Duranti (2017) constant-voltage circuit for dielectric fluid transducers.</div>
     <div class="info-box">
@@ -116,7 +116,7 @@
 
   <!-- RESULTS -->
   <section class="wiki-section" id="hasel-results">
-    <div class="section-header"><div class="section-icon icon-green">📊</div><div><div class="section-title">Experimental Results — Paper 1</div><div class="section-subtitle">Net energy per cycle across 4×5 voltage × force matrix</div></div></div>
+    <div class="section-header"><div class="section-icon icon-blue">📊</div><div><div class="section-title">Experimental Results — Paper 1</div><div class="section-subtitle">Net energy per cycle across 4×5 voltage × force matrix</div></div></div>
     <div class="section-divider"></div>
     <div class="prose">Published as "Generating Electricity with HASELs and Their Mechanics" in <em>Energies</em> (MDPI). Full dataset: N ≈ 10–20 per point. Co-authors: Blake Boren &amp; Stephen Chamot (NREL). First experimental demonstration of HASEL energy generation.</div>
     <div class="stats-row">
@@ -151,7 +151,7 @@
 
   <!-- FREQ STUDY -->
   <section class="wiki-section" id="hasel-freq">
-    <div class="section-header"><div class="section-icon icon-green">📈</div><div><div class="section-title">Power Output &amp; Frequency Study</div><div class="section-subtitle">NREL MEGSRP Appointment — Jan–Jul 2025</div></div></div>
+    <div class="section-header"><div class="section-icon icon-blue">📈</div><div><div class="section-title">Power Output &amp; Frequency Study</div><div class="section-subtitle">NREL MEGSRP Appointment — Jan–Jul 2025</div></div></div>
     <div class="section-divider"></div>
     <div class="prose">Investigates <strong>cyclic energy harvesting</strong> and <strong>power density vs. cycling frequency</strong> (0.5–20 Hz, 2–5 kV). Key question: does power scale linearly as P = E·f, or do viscous losses or circuit limits reduce performance at higher frequencies?</div>
     <div class="cards">
@@ -174,7 +174,7 @@
 
   <!-- SELF-SENSING -->
   <section class="wiki-section" id="hasel-selfsensing">
-    <div class="section-header"><div class="section-icon icon-green">📡</div><div><div class="section-title">Capacitive Self-Sensing</div><div class="section-subtitle">AC impedance sensing for real-time deformation feedback</div></div></div>
+    <div class="section-header"><div class="section-icon icon-blue">📡</div><div><div class="section-title">Capacitive Self-Sensing</div><div class="section-subtitle">AC impedance sensing for real-time deformation feedback</div></div></div>
     <div class="section-divider"></div>
     <div class="prose">By superimposing a low-amplitude, high-frequency AC signal on the driving voltage, capacitance — and therefore deformation — can be read in real time without additional sensors. Known as <strong>Data-over-Power / Power Line Communication</strong>. Artimus Robotics demonstrates single-digit gram sensitivity on commercial HASELs.</div>
     <div class="eq-box">X_C = 1 / (ω · C)  ·  Z = √(R² + X_C²)  ·  C ≈ 1 / (2π f X_C)</div>
@@ -187,7 +187,7 @@
 
   <!-- MEMCAPACITANCE -->
   <section class="wiki-section" id="hasel-memcap">
-    <div class="section-header"><div class="section-icon icon-green">🔬</div><div><div class="section-title">HASEL Memcapacitance</div><div class="section-subtitle">Nonlinear C vs. V characterization with hysteresis — April 2026</div></div></div>
+    <div class="section-header"><div class="section-icon icon-blue">🔬</div><div><div class="section-title">HASEL Memcapacitance</div><div class="section-subtitle">Nonlinear C vs. V characterization with hysteresis — April 2026</div></div></div>
     <div class="section-divider"></div>
     <div class="prose">Goal: map the HASEL's <strong>nonlinear capacitance as a function of voltage with hysteresis</strong> — producing Q vs. V and C vs. V plots at different bias frequencies. This characterizes the memcapacitive behavior (capacitance depends on voltage history) and is key to understanding frequency-dependent energy harvesting.</div>
     <div class="callout callout-blue"><strong>Method (Acome 2018 approach):</strong> Superimpose a low-amplitude triangular wave (~100 Hz) onto a large-amplitude sinusoidal bias (~1 Hz, ±5 kV). Since I_c = C·dV/dt, the triangular wave induces a square-wave current whose amplitude is proportional to capacitance. As the bias sweeps, the AC current amplitude traces C vs. V — including hysteresis from internal fluid dynamics.</div>
@@ -214,7 +214,7 @@
 
   <!-- NEBULA EH -->
   <section class="wiki-section" id="nebula-eh">
-    <div class="section-header"><div class="section-icon icon-green">🌊</div><div><div class="section-title">Nebula EH on Bending Structure</div><div class="section-subtitle">Gantry base-excitation experiments — Oct–Dec 2025</div></div></div>
+    <div class="section-header"><div class="section-icon icon-blue">🌊</div><div><div class="section-title">Nebula EH on Bending Structure</div><div class="section-subtitle">Gantry base-excitation experiments — Oct–Dec 2025</div></div></div>
     <div class="section-divider"></div>
     <div class="prose">Integrates HASEL energy harvesting with bending motion — simulating a robotic fish in a Kármán vortex street. The gantry provides sinusoidal base excitation; HASEL pouches on the bending structure generate electricity. DIC captures the zipped area as a proxy for capacitance change. The phase relationship between base excitation and HASEL strain governs when to trigger the EH cycle.</div>
     <div class="callout callout-amber"><strong>First attempt (Oct 2025) — failed:</strong> No energy generated. The front HASEL was broken, and the timing code was phased for it — experiments ran 180° out of phase. Subsequent FRF sweeps showed π/2 phase offset between base excitation and HASEL strain at 1 Hz. Corrected for second trial.</div>
