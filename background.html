@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Background · Isabel Hess Research Wiki</title>
+<link rel="stylesheet" href="shared.css">
+</head>
+<body>
+
+<header class="site-header">
+  <a href="index.html" class="logo">
+    <div class="logo-icon">🐟</div>
+    <div class="logo-text">Isabel Hess &ndash; <span>Research Wiki</span></div>
+  </a>
+  <nav class="top-nav">
+    <a href="index.html"                   ><span class="nav-icon">🗺</span> Overview</a>
+    <a href="nebula.html"                  ><span class="nav-icon">🐟</span> Nebula</a>
+    <a href="energy.html"                  ><span class="nav-icon">⚡</span> Energy Harvesting</a>
+    <a href="side-projects.html"           ><span class="nav-icon">🔧</span> Side Projects</a>
+    <a href="publications.html"            ><span class="nav-icon">📄</span> Publications</a>
+    <a href="background.html" class="active"><span class="nav-icon">📚</span> Background</a>
+  </nav>
+  <div class="header-right">
+    <div class="global-search"><span>⌕</span><input type="text" id="globalSearch" placeholder="Search all pages…" autocomplete="off"></div>
+    <div class="header-meta">Reference</div>
+  </div>
+</header>
+
+<aside class="sidebar">
+  <div style="padding:0 12px 10px">
+    <div style="display:flex;align-items:center;gap:6px;padding:6px 9px;background:var(--bg);border:1px solid var(--border);border-radius:7px">
+      <span style="color:var(--text-faint);font-size:13px">⌕</span>
+      <input type="text" id="sidebarSearch" placeholder="Search this page…" autocomplete="off"
+        style="border:none;background:transparent;outline:none;color:var(--text);font-family:var(--font-mono);font-size:12px;width:100%">
+    </div>
+  </div>
+  <div class="no-results" id="sidebarNoResults">No matches</div>
+
+  <div class="nav-label">Background</div>
+  <a href="#hasel-background" class="active" data-terms="hasel background what is hydraulically amplified self healing electrostatic peano variable capacitor artimus electrostatic zipping dielectric fluid oil film bopp maxwell stress"><span class="nav-dot" style="background:var(--teal)"></span>What is a HASEL?</a>
+  <a href="#ehe-background"               data-terms="ehe background euler bernoulli lighthill galerkin traveling index mac beam theory fluid structure musgrave 2021 aureli nonlinear damping added mass inertial viscous rothemund"><span class="nav-dot" style="background:var(--teal)"></span>EHE Modeling Background</a>
+</aside>
+
+<main>
+  <div class="page-hero" style="background:linear-gradient(135deg, var(--surface) 0%, #e8f5f5 100%)">
+    <div class="page-hero-tag" style="color:var(--teal)">Reference Material</div>
+    <h1>Background</h1>
+    <p>Foundational concepts behind the research — what HASELs are, how they work, and how the electro-hydro-elastic (EHE) beam framework models submerged flexible propulsors.</p>
+  </div>
+
+  <div class="content">
+
+  <!-- HASEL BACKGROUND -->
+  <section class="wiki-section" id="hasel-background">
+    <div class="section-header"><div class="section-icon icon-teal">🧠</div><div><div class="section-title">What is a HASEL?</div><div class="section-subtitle">Hydraulically Amplified Self-Healing Electrostatic actuators</div></div></div>
+    <div class="section-divider"></div>
+    <div class="prose"><strong>HASEL actuators</strong> are soft electrostatic actuators inspired by biological muscle — inextensible polymer pouches of dielectric oil with conductive electrodes on the outside. Applied high voltage creates Maxwell stress between the electrodes, causing them to <strong>zip together</strong>, displacing fluid and contracting the pouch. Because the dielectric is a liquid, the device can self-heal after dielectric breakdown.</div>
+    <div class="cards">
+      <div class="card">
+        <div class="card-tag">Operating Principle</div>
+        <h3>Electrostatic Zipping</h3>
+        <p>Maxwell stress (electrostatic pressure) between electrode-covered areas exceeds the hydraulic restoring pressure of the fluid → electrodes zip together → fluid displaced toward unelectroded region → pouch contracts laterally.</p>
+      </div>
+      <div class="card">
+        <div class="card-tag">Geometry (Peano-HASEL)</div>
+        <h3>Rectangular Pouch</h3>
+        <p>Flat rectangular pouch; electrodes cover approximately half the length (L_e ≈ L_p/2). Unzipped region bulges into a circular segment. Kellaris (2019) analytic model: voltage → force/stroke.</p>
+      </div>
+      <div class="card">
+        <div class="card-tag">Self-Healing</div>
+        <h3>Dielectric Fluid Advantage</h3>
+        <p>Unlike solid DEAs, HASELs use liquid dielectric oil. Pinhole breakdowns self-heal as oil fills the gap. Key advantage for longevity in underwater or harsh environments.</p>
+      </div>
+      <div class="card">
+        <div class="card-tag">Variable Capacitor</div>
+        <h3>Capacitance Change Mechanism</h3>
+        <p>Zipped area acts as a parallel-plate capacitor: C = ε₀ε_r·w·l_e / 2t. As more electrode area zips, capacitance increases. Unzipped region contributes negligible capacitance (Kellaris 2019). C_max/C_min ≈ 11.7× for commercial HASELs.</p>
+      </div>
+      <div class="card">
+        <div class="card-tag">Dynamic Regimes</div>
+        <h3>Inertial vs. Viscous</h3>
+        <p>Per Rothemund (2020): τ_v/τ_i = μwL^½/Mg^½. Inertial regime → t_n ∝ L^½, independent of viscosity. Artimus commercial HASELs operate in the inertial regime — response determined by inertia of the oil, not its viscosity.</p>
+      </div>
+      <div class="card">
+        <div class="card-tag">Commercial Source</div>
+        <h3>Artimus Robotics</h3>
+        <p>Denver, CO. Commercial Peano-HASEL with thin-film unipolar design. 8-channel ARDI power supply used for Nebula v2. Self-sensing via AC impedance built into their newest multi-channel supplies.</p>
+      </div>
+    </div>
+
+    <h4 style="font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--text-muted);font-family:var(--font-mono);margin-bottom:9px;">HASEL Material Parameters</h4>
+    <div class="info-box">
+      <div class="annotation-row"><span class="ann-symbol">ε_r</span><span class="ann-name">Relative permittivity, BOPP dielectric film</span><span class="ann-val">2.2</span></div>
+      <div class="annotation-row"><span class="ann-symbol">ε_0</span><span class="ann-name">Permittivity of free space</span><span class="ann-val">8.854 × 10⁻¹² F/m</span></div>
+      <div class="annotation-row"><span class="ann-symbol">t</span><span class="ann-name">Film thickness</span><span class="ann-val">12–18 µm</span></div>
+      <div class="annotation-row"><span class="ann-symbol">w</span><span class="ann-name">Pouch width</span><span class="ann-val">49–53 mm</span></div>
+      <div class="annotation-row"><span class="ann-symbol">L_p / L_e</span><span class="ann-name">Pouch length / Electrode length</span><span class="ann-val">17.0 / 9.37 mm</span></div>
+      <div class="annotation-row"><span class="ann-symbol">V_breakdown</span><span class="ann-name">Typical dielectric breakdown voltage (BOPP film)</span><span class="ann-val">~10 kV</span></div>
+    </div>
+
+    <div class="callout callout-blue"><strong>Generation mode connection:</strong> The same variable capacitance that makes HASELs useful actuators also makes them viable generators. When a zipped (high-C) HASEL is mechanically unzipped at constant voltage, charge is ejected to an external storage element. This is the basis of the <a href="energy.html#hasel-theory" style="color:var(--accent)">CCW constant-voltage generation cycle</a>.</div>
+  </section>
+
+  <!-- EHE BACKGROUND -->
+  <section class="wiki-section" id="ehe-background">
+    <div class="section-header"><div class="section-icon icon-teal">📚</div><div><div class="section-title">EHE Modeling Background</div><div class="section-subtitle">Electro-hydro-elastic beam theory for submerged robotic propulsors</div></div></div>
+    <div class="section-divider"></div>
+    <div class="prose">The electro-hydro-elastic (EHE) framework couples structural beam mechanics, fluid-structure interaction, and electromechanical actuation in a single governing equation. It is computationally efficient compared to coupled FEA-CFD and enables rapid parametric studies on stiffness, geometry, and actuation. The framework in this work follows Musgrave (2021).</div>
+    <div class="cards">
+      <div class="card"><div class="card-tag">Structural</div><h3>Euler-Bernoulli Beam</h3><p>Small-deflection assumption. Variable bending stiffness EI(x) and mass per unit length m(x). Augmented with nonlinear terms (Aureli 2012, Ramananarivo 2013) for large-amplitude cases.</p></div>
+      <div class="card"><div class="card-tag">Fluid — Quiescent</div><h3>Lighthill + Nonlinear Damping</h3><p>Lighthill (1971) elongated-body theory provides reactive (added mass) and resistive forces. Aureli (2012) nonlinear cubic damping term accounts for vortex shedding at moderate amplitudes and Keulegan-Carpenter numbers.</p></div>
+      <div class="card"><div class="card-tag">Fluid — Uniform Flow</div><h3>Linearized Potential Flow</h3><p>Garrick (1936) / Theodorsen unsteady lift on an oscillating flat plate. Valid at low reduced frequencies. Validated against LDV data from an aluminum propulsor in UF water tunnel.</p></div>
+      <div class="card"><div class="card-tag">Solution Method</div><h3>Galerkin Projection</h3><p>PDE projected onto N vacuum mode shapes as basis functions. Reduces to N coupled ODEs. Root-finding handles frequency-dependent nonlinear eigenvalue. N = 20 basis functions used for Nebula simulations.</p></div>
+      <div class="card"><div class="card-tag">Traveling Index</div><h3>Complex Orthogonal Decomposition</h3><p>Ti ∈ [0,1] quantifies the proportion of traveling vs. standing waves in the response waveform. Ti = 0 → pure standing wave; Ti = 1 → pure traveling wave. Method from Feeny (2008), used in Musgrave (2021) and Hess (2022).</p></div>
+      <div class="card"><div class="card-tag">Mode Shape Quality</div><h3>MAC — Modal Assurance Criterion</h3><p>MAC ∈ [0,1] measures correlation between a simulated mode shape and the corresponding experimentally measured mode shape. MAC = 1 → perfect agreement; MAC &lt; 0.5 → poor agreement. Nebula Mode 1 MAC = 0.989.</p></div>
+    </div>
+
+    <h4 style="font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--text-muted);font-family:var(--font-mono);margin-bottom:9px;">Governing Equation Summary</h4>
+    <div class="eq-box">∂²/∂x² [ EI(x) ∂²w/∂x² ] + [m_s(x) + m_p(x)] ∂²w/∂t² + F_fluid(w, ẇ, x, t) = M_HASEL(x, V(t))
+<br><br>
+F_fluid (quiescent) = m_f(x) Γ(ω) ∂²w/∂t² + m_f(x) Δ(β,ε) ∂²w/∂t²  [Aureli 2012]
+<br><br>
+M_HASEL = ∂²/∂x² [ θ(x) χ_p(x) V(t) ]    [linearized HASEL constitutive relation]</div>
+
+    <div class="callout callout-blue"><strong>Validation strategy:</strong> Quiescent EHE model validated against Nebula DIC (natural frequencies, mode shapes, MAC). Uniform-flow model validated against a piezo-actuated thin aluminum beam in the UF recirculating water tunnel. Both models merged into one MATLAB package with a case structure switch.</div>
+
+    <h4 style="font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--text-muted);font-family:var(--font-mono);margin-bottom:9px;">Key Literature</h4>
+    <div class="info-box">
+      <div class="annotation-row"><span class="ann-symbol">Musgrave 2021</span><span class="ann-name">EHE framework for structure-borne noise on flexible propulsors — basis for all Nebula simulations</span></div>
+      <div class="annotation-row"><span class="ann-symbol">Aureli 2012</span><span class="ann-name">Nonlinear finite amplitude vibrations of a cantilever beam in quiescent fluid — nonlinear damping term</span></div>
+      <div class="annotation-row"><span class="ann-symbol">Lighthill 1971</span><span class="ann-name">Large-amplitude elongated body theory — reactive and resistive fluid forces</span></div>
+      <div class="annotation-row"><span class="ann-symbol">Kellaris 2019</span><span class="ann-name">Analytical HASEL actuator model — voltage, geometry, force, stroke relationship</span></div>
+      <div class="annotation-row"><span class="ann-symbol">Feeny 2008</span><span class="ann-name">Complex orthogonal decomposition for traveling wave analysis — traveling index definition</span></div>
+      <div class="annotation-row"><span class="ann-symbol">Rothemund 2020</span><span class="ann-name">HASEL actuator dynamics — inertial vs. viscous regime, response time scaling</span></div>
+      <div class="annotation-row"><span class="ann-symbol">Ramananarivo 2013</span><span class="ann-name">Passive elastic mechanism for swimming locomotion — nonlinear EHE augmentation</span></div>
+      <div class="annotation-row"><span class="ann-symbol">DiSanto 2021</span><span class="ann-name">Convergence in undulatory swimming — biological BCF quadratic midline model used for comparison</span></div>
+    </div>
+  </section>
+
+  <div style="height:40px"></div>
+  </div>
+</main>
+
+<script src="shared.js"></script>
+</body>
+</html>

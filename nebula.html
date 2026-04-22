@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nebula · Isabel Hess Research Wiki</title>
+<link rel="stylesheet" href="shared.css">
+</head>
+<body>
+
+<header class="site-header">
+  <a href="index.html" class="logo">
+    <div class="logo-icon">🐟</div>
+    <div class="logo-text">Isabel Hess &ndash; <span>Research Wiki</span></div>
+  </a>
+  <nav class="top-nav">
+    <a href="index.html"                ><span class="nav-icon">🗺</span> Overview</a>
+    <a href="nebula.html"        class="active"><span class="nav-icon">🐟</span> Nebula</a>
+    <a href="energy.html"               ><span class="nav-icon">⚡</span> Energy Harvesting</a>
+    <a href="side-projects.html"        ><span class="nav-icon">🔧</span> Side Projects</a>
+    <a href="publications.html"         ><span class="nav-icon">📄</span> Publications</a>
+    <a href="background.html"           ><span class="nav-icon">📚</span> Background</a>
+  </nav>
+  <div class="header-right">
+    <div class="global-search"><span>⌕</span><input type="text" id="globalSearch" placeholder="Search all pages…" autocomplete="off"></div>
+    <div class="header-meta">Aim 1</div>
+  </div>
+</header>
+
+<aside class="sidebar">
+  <div style="padding:0 12px 10px">
+    <div style="display:flex;align-items:center;gap:6px;padding:6px 9px;background:var(--bg);border:1px solid var(--border);border-radius:7px">
+      <span style="color:var(--text-faint);font-size:13px">⌕</span>
+      <input type="text" id="sidebarSearch" placeholder="Search this page…" autocomplete="off"
+        style="border:none;background:transparent;outline:none;color:var(--text);font-family:var(--font-mono);font-size:12px;width:100%">
+    </div>
+  </div>
+  <div class="no-results" id="sidebarNoResults">No matches</div>
+
+  <div class="nav-label">Aim 1 — Soft Robotic Fish</div>
+  <a href="#nebula-design"  class="active" data-terms="nebula design fabrication tpu silicone hasel skeleton mold ecoflex speckle paint cantilever fish jr prototype"><span class="nav-dot" style="background:var(--accent)"></span>Design &amp; Fabrication</a>
+  <a href="#nebula-testing" data-terms="nebula kinematic testing dic ldv laser doppler vibrometry quiescent water modal mac traveling index mode shape cupping caudal"><span class="nav-dot" style="background:var(--accent)"></span>Kinematic Testing</a>
+  <a href="#nebula-model"   data-terms="ehe electro hydro elastic model simulation galerkin euler bernoulli fluid structure lighthill aureli nonlinear damping basis functions"><span class="nav-dot" style="background:var(--accent)"></span>EHE Simulation</a>
+  <a href="#nebula-v2"      data-terms="nebula v2 robosoft 2025 strain gauge load cell dspace thrust phase offset distributed muscles lausanne soto mode 2 resonance"><span class="nav-dot" style="background:var(--accent)"></span>Nebula v2</a>
+</aside>
+
+<main>
+  <div class="page-hero">
+    <div class="page-hero-tag" style="color:var(--accent)">Aim 1 — Soft Robotic Fish</div>
+    <h1>Nebula</h1>
+    <p>A continuously flexible, solid-state robotic trout actuated by HASEL artificial muscles — designed, fabricated, and characterized at three damped natural frequencies in quiescent water.</p>
+  </div>
+
+  <div class="content">
+
+  <!-- DESIGN -->
+  <section class="wiki-section" id="nebula-design">
+    <div class="section-header"><div class="section-icon icon-blue">🐟</div><div><div class="section-title">Design &amp; Fabrication</div><div class="section-subtitle">Solid-state soft robotic trout with embedded HASEL actuators</div></div></div>
+    <div class="section-divider"></div>
+    <div class="prose"><strong>Nebula</strong> is a continuously flexible robotic propulsor inspired by cartilaginous BCF fish. It is <strong>solid-state</strong> — no rigid linkages — with a flexible TPU skeleton encased in Ecoflex 00-10 silicone. HASEL muscles embedded antagonistically across the spine produce lateral contractions that passively induce BCF swimming kinematics.</div>
+    <div class="cards">
+      <div class="card"><div class="card-tag">Skeleton</div><h3>3D-Printed TPU Spine</h3><p>E ≈ 2.41 GPa. Variable cross-section (trout profile equation). ABS standoffs position HASELs away from neutral axis to maximize moment arm.</p></div>
+      <div class="card"><div class="card-tag">Body</div><h3>Ecoflex 00-10 Silicone</h3><p>High-compliance cast around actuated skeleton. Two-part ABS mold, vacuum degassed. Silpoxy adhesive bonds silicone to TPU. Wiring routed internally through the head.</p></div>
+      <div class="card"><div class="card-tag">Actuation</div><h3>HASEL Artificial Muscles</h3><p>Peano-HASEL pouches in antagonistic configuration. Alternating square-wave signals at 8 kV, offset by half-period. Artimus Robotics portable HV supply (PS1-10-005-01).</p></div>
+      <div class="card"><div class="card-tag">DIC Finish</div><h3>Speckle Paint</h3><p>NoVOCs Matte Psycho Paint (Smooth-On). Black dots on white base by airbrush. Sealed with clear coat. Enables full-field 3D Digital Image Correlation.</p></div>
+      <div class="card"><div class="card-tag">Mounting</div><h3>Cantilever Mount</h3><p>Aluminum tether bolted through anterior body. ASA plastic head halves (Silpoxy-bonded, Ecoflex-filled). Fixed–free cantilever boundary condition.</p></div>
+      <div class="card"><div class="card-tag">Dimensions</div><h3>Key Geometry</h3><p>Body ≈ 306 mm (without head), 456 mm with head. Caudal fin width ≈ 132 mm. Target: ≥ 4 in. pk-pk deflection at first natural frequency.</p></div>
+    </div>
+    <div class="callout callout-amber"><strong>Design Rationale — Anterior Actuation:</strong> EMG studies show that at cruising speeds fish use mainly anterior muscles while the posterior body passively carries the traveling wave. Nebula places two HASEL actuators anteriorly with a passive tail.</div>
+    <div class="info-box">
+      <div class="info-box-header"><h4>Fabrication Timeline</h4></div>
+      <div class="timeline" style="margin-bottom:0">
+        <div class="timeline-item complete"><div class="tl-date">Jul 2022</div><div class="tl-title">Fish Jr. prototype</div><div class="tl-body">Smaller test of silicone casting methods. LDV showed minimal deformation — body too thick. Prompted slimming Nebula.</div></div>
+        <div class="timeline-item complete"><div class="tl-date">Oct 2022</div><div class="tl-title">Nebula fabrication complete</div><div class="tl-body">Pre-cast LDV tests (Aug), post-cast air tests (Oct).</div></div>
+        <div class="timeline-item complete"><div class="tl-date">Nov 2022 – Feb 2023</div><div class="tl-title">Aquarium testing</div><div class="tl-body">Modal, LDV, and DIC experiments in quiescent water.</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTING -->
+  <section class="wiki-section" id="nebula-testing">
+    <div class="section-header"><div class="section-icon icon-blue">📡</div><div><div class="section-title">Kinematic Testing</div><div class="section-subtitle">DIC + LDV characterization in quiescent water at three natural frequencies</div></div></div>
+    <div class="section-divider"></div>
+    <div class="prose">Characterized at three damped natural frequencies in an aquarium. A <strong>Laser Doppler Vibrometer (LDV)</strong> measured single-point out-of-plane velocity/displacement at the caudal fin tip. <strong>3D Digital Image Correlation (DIC)</strong> gave full-field surface deformation. The two systems were in agreement, cross-validating both measurements.</div>
+    <div class="stats-row">
+      <div class="stat-box"><div class="stat-val" style="color:var(--accent)">1.12 Hz</div><div class="stat-label">Mode 1 natural frequency</div></div>
+      <div class="stat-box"><div class="stat-val" style="color:var(--accent)">3.5 Hz</div><div class="stat-label">Mode 2 natural frequency</div></div>
+      <div class="stat-box"><div class="stat-val" style="color:var(--accent)">11 Hz</div><div class="stat-label">Mode 3 natural frequency</div></div>
+      <div class="stat-box"><div class="stat-val" style="color:var(--green)">74 mm/s</div><div class="stat-label">Peak tip velocity (Mode 1)</div></div>
+      <div class="stat-box"><div class="stat-val" style="color:var(--green)">9.6 mm</div><div class="stat-label">Tip displacement (Mode 1)</div></div>
+    </div>
+    <h4 style="font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--text-muted);font-family:var(--font-mono);margin-bottom:8px;">1D Tailbeat Data</h4>
+    <table class="data-table" style="margin-bottom:18px">
+      <thead><tr><th>Excitation Freq (Hz)</th><th>Tip Velocity (mm/s)</th><th>Tip Displacement (mm)</th><th>ω·w (mm/s)</th><th>Traveling Index Ti</th></tr></thead>
+      <tbody>
+        <tr><td class="val-highlight">1.12</td><td>74, 70</td><td>9.6, 9.4</td><td>67.5</td><td>Ti₁ = 0.065</td></tr>
+        <tr><td class="val-highlight">3.5</td><td>51, 54</td><td>1.36, 1.40</td><td>31</td><td>Ti₂ = 0.28</td></tr>
+        <tr><td class="val-highlight">11</td><td>47</td><td>0.65</td><td>45</td><td>Ti₃ = 0.14</td></tr>
+      </tbody>
+    </table>
+    <div class="callout callout-blue"><strong>Key insight — velocity vs. displacement:</strong> Despite a ~15× drop in displacement from Mode 1 to Mode 3, tail-beat velocity only roughly halves because ẇ = ωw. Higher modes maintain good propulsive velocity with significantly less drag-inducing body deviation from streamline shape.</div>
+    <div class="grid2">
+      <div class="info-box">
+        <div class="info-box-header"><h4>MAC Matrix — Sim vs. Experiment</h4></div>
+        <table class="data-table">
+          <thead><tr><th></th><th>Exp Mode 1</th><th>Exp Mode 2</th><th>Exp Mode 3</th></tr></thead>
+          <tbody>
+            <tr><td>Sim Mode 1</td><td class="val-highlight">0.989</td><td>0.098</td><td>0.077</td></tr>
+            <tr><td>Sim Mode 2</td><td>0.086</td><td class="val-highlight">0.755</td><td>0.152</td></tr>
+            <tr><td>Sim Mode 3</td><td>0.186</td><td>0.027</td><td class="val-highlight">0.559</td></tr>
+          </tbody>
+        </table>
+        <div class="footnote">High diagonal = strong agreement. Mode 1 near-perfect (MAC &gt; 0.90); Mode 3 weaker.</div>
+      </div>
+      <div class="info-box">
+        <div class="info-box-header"><h4>Measurement Methods</h4></div>
+        <div class="annotation-row"><span class="ann-symbol">LDV</span><span class="ann-name">Laser Doppler Vibrometer — Doppler-based out-of-plane velocity at caudal tip</span></div>
+        <div class="annotation-row"><span class="ann-symbol">DIC</span><span class="ann-name">3D Digital Image Correlation — full-field surface deformation from speckle images</span></div>
+        <div class="annotation-row"><span class="ann-symbol">Ti</span><span class="ann-name">Traveling Index (Complex Orthogonal Decomp.) — 0 = standing, 1 = traveling wave</span></div>
+        <div class="annotation-row"><span class="ann-symbol">MAC</span><span class="ann-name">Modal Assurance Criterion — correlation between sim and experimental mode shapes</span></div>
+      </div>
+    </div>
+    <div class="callout callout-green"><strong>3D finding — caudal cupping:</strong> Full-field DIC revealed passive cupping of the caudal fin about the rostro-caudal axis, increasing with excitation frequency. Negligible at Mode 1, prominent at Mode 3. Cupping may alter hydrodynamic length, stiffness, and trailing-edge vortex shedding.</div>
+  </section>
+
+  <!-- EHE MODEL -->
+  <section class="wiki-section" id="nebula-model">
+    <div class="section-header"><div class="section-icon icon-blue">📐</div><div><div class="section-title">Electro-Hydro-Elastic (EHE) Simulation</div><div class="section-subtitle">Nonlinear beam model of the submerged soft robotic propulsor</div></div></div>
+    <div class="section-divider"></div>
+    <div class="prose">The EHE model treats Nebula's body as a <strong>nonlinear Euler-Bernoulli beam</strong>. Fluid coupling uses Lighthill's elongated body theory (quiescent) or linearized potential flow (uniform flow). Actuator forcing uses a linearized HASEL constitutive relation (Kellaris 2019). The Galerkin method with N = 20 basis functions gives the frequency response.</div>
+    <div class="cards">
+      <div class="card"><div class="card-tag">Structural</div><h3>Nonlinear Euler-Bernoulli Beam</h3><p>Variable cross-section piecewise EI(x), m(x) tuned to fabrication drawing. Skeleton + silicone + HASEL contributions. ABS standoffs added. Fluid added mass C_a = 0.5.</p></div>
+      <div class="card"><div class="card-tag">Fluid — Quiescent</div><h3>Aureli Nonlinear Damping</h3><p>Nonlinear fluid damping from vortex shedding. Lighthill slender-body theory for added mass. Linearized about harmonic motion; root-finding for the nonlinear eigenvalue.</p></div>
+      <div class="card"><div class="card-tag">Fluid — Uniform Flow</div><h3>Linearized Potential Flow</h3><p>Validated against LDV/DIC data from a piezo-actuated aluminum propulsor in the water tunnel. Good agreement at low reduced frequencies.</p></div>
+      <div class="card"><div class="card-tag">Actuator</div><h3>Linearized HASEL Model</h3><p>Voltage → force → beam deflection. Silicone mass and stiffness added directly to substrate matrices. Piecewise functions along body length for both actuator and body geometry.</p></div>
+    </div>
+    <h4 style="font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--text-muted);font-family:var(--font-mono);margin-bottom:8px;">Model Corrections to Match Experimental Data</h4>
+    <div class="info-box" style="margin-bottom:0">
+      <div class="annotation-row"><span class="ann-symbol">1</span><span class="ann-name">Silicone width/thickness via piecewise functions (not trout equation alone)</span></div>
+      <div class="annotation-row"><span class="ann-symbol">2</span><span class="ann-name">Skeleton mass reduced at punched holes (modified density function)</span></div>
+      <div class="annotation-row"><span class="ann-symbol">3</span><span class="ann-name">ABS standoff mass + stiffness added to skeleton</span></div>
+      <div class="annotation-row"><span class="ann-symbol">4</span><span class="ann-name">Silicone mass multiplier 0.75; stiffness multiplier 1.3</span></div>
+      <div class="annotation-row"><span class="ann-symbol">5</span><span class="ann-name">Fluid added mass coefficient reduced to C_a = 0.5</span></div>
+      <div class="annotation-row"><span class="ann-symbol">6</span><span class="ann-name">Basis function count increased to 20 for convergence</span></div>
+    </div>
+  </section>
+
+  <!-- NEBULA V2 -->
+  <section class="wiki-section" id="nebula-v2">
+    <div class="section-header"><div class="section-icon icon-blue">🔧</div><div><div class="section-title">Nebula v2</div><div class="section-subtitle">Redesigned robot — presented at RoboSoft 2025, Lausanne</div></div></div>
+    <div class="section-divider"></div>
+    <div class="prose">After a broken HASEL in Nebula v1 (Dec 2023) halted water tunnel testing, Nebula v2 was designed with three independently controllable muscle sets, embedded strain gauges, and a 6-axis load cell. Results at <strong>RoboSoft 2025</strong> (Lausanne, Apr 2025) demonstrated a <strong>44% thrust increase</strong> via sequential phase offset actuation at Mode 2.</div>
+    <div class="callout callout-blue"><strong>RoboSoft 2025 paper:</strong> K. Soto, I. Hess, B. Schrader, S. He, and P. Musgrave, "Improving Swimming Performance in Soft Robotic Fish with Distributed Muscles and Embedded Kinematic Sensing," <em>IEEE RoboSoft 2025</em>, Lausanne. <a href="https://doi.org/10.1109/RoboSoft63089.2025.11020876" class="doi">doi:10.1109/RoboSoft63089.2025.11020876</a></div>
+    <div class="stats-row">
+      <div class="stat-box"><div class="stat-val" style="color:var(--green)">7.9 mN</div><div class="stat-label">Max thrust — Mode 1 (2 Hz), all in phase</div></div>
+      <div class="stat-box"><div class="stat-val" style="color:var(--green)">5.0 mN</div><div class="stat-label">Thrust — Mode 2 (8 Hz), synchronized</div></div>
+      <div class="stat-box"><div class="stat-val" style="color:var(--accent)">7.2 mN</div><div class="stat-label">Thrust — Mode 2 with phase offset</div></div>
+      <div class="stat-box"><div class="stat-val" style="color:var(--accent)">+44%</div><div class="stat-label">Thrust improvement with phase offset</div></div>
+      <div class="stat-box"><div class="stat-val" style="color:var(--teal)">4×</div><div class="stat-label">Traveling wave content increase</div></div>
+    </div>
+    <div class="cards">
+      <div class="card"><div class="card-tag">Key Upgrade</div><h3>3 Distributed Muscle Sets</h3><p>Three axially-distributed HASEL sets (vs. one pair in v1). Sequential phase offset increases traveling wave content and thrust at Mode 2.</p></div>
+      <div class="card"><div class="card-tag">Sensing</div><h3>Embedded Strain Gauges</h3><p>Gauges along the TPU spine, 10 channels. Strain-to-displacement via spline interpolation between sensor locations. Verified fixed broken gauge before experiments.</p></div>
+      <div class="card"><div class="card-tag">DAQ</div><h3>dSpace + Artimus ARDI</h3><p>All signals through dSpace. Artimus 8-channel ARDI power supply. Python phase-offset code for 6 channels. BNC-to-pigtail for strain gauges.</p></div>
+      <div class="card"><div class="card-tag">Key Finding</div><h3>Mode 2 Advantages</h3><p>Mode 2 (8 Hz) generates nearly as much thrust as Mode 1 (2 Hz) with only ~25% tail displacement — advantageous for confined environments requiring a small kinematic envelope.</p></div>
+    </div>
+    <div class="callout callout-amber"><strong>Note on dry testing:</strong> TPU-only dry testing is not fully representative — the number of ground wires changed between tests and wires are slightly off the neutral axis, affecting mass distribution.</div>
+  </section>
+
+  <div style="height:40px"></div>
+  </div><!-- /content -->
+</main>
+
+<script src="shared.js"></script>
+</body>
+</html>

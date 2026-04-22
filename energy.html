@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Energy Harvesting · Isabel Hess Research Wiki</title>
+<link rel="stylesheet" href="shared.css">
+</head>
+<body>
+
+<header class="site-header">
+  <a href="index.html" class="logo">
+    <div class="logo-icon">🐟</div>
+    <div class="logo-text">Isabel Hess &ndash; <span>Research Wiki</span></div>
+  </a>
+  <nav class="top-nav">
+    <a href="index.html"                ><span class="nav-icon">🗺</span> Overview</a>
+    <a href="nebula.html"               ><span class="nav-icon">🐟</span> Nebula</a>
+    <a href="energy.html"        class="active"><span class="nav-icon">⚡</span> Energy Harvesting</a>
+    <a href="side-projects.html"        ><span class="nav-icon">🔧</span> Side Projects</a>
+    <a href="publications.html"         ><span class="nav-icon">📄</span> Publications</a>
+    <a href="background.html"           ><span class="nav-icon">📚</span> Background</a>
+  </nav>
+  <div class="header-right">
+    <div class="global-search"><span>⌕</span><input type="text" id="globalSearch" placeholder="Search all pages…" autocomplete="off"></div>
+    <div class="header-meta">Aim 2</div>
+  </div>
+</header>
+
+<aside class="sidebar">
+  <div style="padding:0 12px 10px">
+    <div style="display:flex;align-items:center;gap:6px;padding:6px 9px;background:var(--bg);border:1px solid var(--border);border-radius:7px">
+      <span style="color:var(--text-faint);font-size:13px">⌕</span>
+      <input type="text" id="sidebarSearch" placeholder="Search this page…" autocomplete="off"
+        style="border:none;background:transparent;outline:none;color:var(--text);font-family:var(--font-mono);font-size:12px;width:100%">
+    </div>
+  </div>
+  <div class="no-results" id="sidebarNoResults">No matches</div>
+
+  <div class="nav-label">Aim 2 — Energy Harvesting</div>
+  <a href="#hasel-theory"      class="active" data-terms="hasel theory ccw generation cycle capacitance voltage zipping priming constant voltage cmax cmin kellaris"><span class="nav-dot" style="background:var(--green)"></span>Theory of Operation</a>
+  <a href="#hasel-circuit"     data-terms="hasel circuit duranti reed relay pico voltage measurement cp resistor hv amplifier cynergy pico electronics"><span class="nav-dot" style="background:var(--green)"></span>Circuit Design</a>
+  <a href="#hasel-results"     data-terms="hasel results energy generation mj efficiency mechanical density test matrix 3kv 6kv energies mdpi boren chamot nrel"><span class="nav-dot" style="background:var(--green)"></span>Experimental Results</a>
+  <a href="#hasel-freq"        data-terms="hasel power frequency cycling nrel megsrp power density linear inertial viscous crio labview motor rothemund clearpath servo"><span class="nav-dot" style="background:var(--green)"></span>Power &amp; Frequency Study</a>
+  <a href="#hasel-selfsensing" data-terms="hasel self sensing capacitive ac impedance rizzello artimus data over power rls recursive least squares"><span class="nav-dot" style="background:var(--green)"></span>Self-Sensing</a>
+  <a href="#hasel-memcap"      data-terms="hasel memcapacitance nonlinear capacitance hysteresis qv cv bias triangular carrier trek amplifier april 2026 acome"><span class="nav-dot" style="background:var(--green)"></span>Memcapacitance</a>
+  <a href="#nebula-eh"         data-terms="nebula energy harvesting bending gantry phase offset dic zipping karman vortex strain resonance base excitation bending structure"><span class="nav-dot" style="background:var(--green)"></span>Nebula EH on Bending Structure</a>
+</aside>
+
+<main>
+  <div class="page-hero" style="background:linear-gradient(135deg, var(--surface) 0%, #f0f8f3 100%)">
+    <div class="page-hero-tag" style="color:var(--green)">Aim 2 — Energy Harvesting</div>
+    <h1>HASEL Energy Harvesting</h1>
+    <p>First experimental demonstration of electricity generation from Peano-HASEL actuators. 2.49 mJ/pouch, 23% mechanical efficiency, with self-sensing and memcapacitance characterization.</p>
+  </div>
+
+  <div class="content">
+
+  <!-- THEORY -->
+  <section class="wiki-section" id="hasel-theory">
+    <div class="section-header"><div class="section-icon icon-green">⚡</div><div><div class="section-title">Theory of Operation</div><div class="section-subtitle">CCW constant-voltage generation cycle from variable capacitance</div></div></div>
+    <div class="section-divider"></div>
+    <div class="prose">HASEL actuators are variable capacitors — zipping increases capacitance. In generation mode: <strong>prime</strong> at high capacitance (zipped), then allow the electrodes to unzip at constant voltage, reducing capacitance and ejecting charge to a storage element. This forms a <strong>counterclockwise (CCW) isopotential loop</strong> in the Q–V plane.</div>
+    <h4 style="font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--text-muted);font-family:var(--font-mono);margin-bottom:10px;">Generation Cycle</h4>
+    <div class="flow" style="margin-bottom:22px">
+      <div class="flow-node">① Priming<br><span style="font-size:10px;color:var(--text-faint)">Apply V, zip<br>↑ Capacitance</span></div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-node active-node">② Generation<br><span style="font-size:10px">Unzip at const V<br>→ eject charge Q</span></div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-node">③ Discharge<br><span style="font-size:10px;color:var(--text-faint)">Reduce V to 0<br>at C_min</span></div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-node">④ Reset<br><span style="font-size:10px;color:var(--text-faint)">Null V,<br>force subsides</span></div>
+    </div>
+    <div class="eq-box">E_e,T ≈ (C_max − C_min) × V² / 2 ≈ C_max × V² / 2
+<br>η_M = E_e / E_m = E_e / (F × Δx)
+<br>C(α) = n_pouches × (ε_r × ε_0 × w) / (2t) × l_e(α)   [Kellaris 2019]</div>
+    <div class="grid2">
+      <div class="info-box">
+        <div class="info-box-header"><h4>HASEL Capacitance Parameters</h4></div>
+        <div class="annotation-row"><span class="ann-symbol">C_max</span><span class="ann-name">Max capacitance (zipped)</span><span class="ann-val">120–528 pF (2-pouch)</span></div>
+        <div class="annotation-row"><span class="ann-symbol">C_min</span><span class="ann-name">Min capacitance (unzipped)</span><span class="ann-val">30–45 pF (2-pouch)</span></div>
+        <div class="annotation-row"><span class="ann-symbol">ε_r</span><span class="ann-name">Relative permittivity, BOPP film</span><span class="ann-val">2.2</span></div>
+        <div class="annotation-row"><span class="ann-symbol">t</span><span class="ann-name">Film thickness</span><span class="ann-val">12–18 µm</span></div>
+        <div class="annotation-row"><span class="ann-symbol">w / L_p / L_e</span><span class="ann-name">Width / Pouch length / Electrode length</span><span class="ann-val">49–53 / 17.0 / 9.37 mm</span></div>
+      </div>
+      <div class="info-box">
+        <div class="info-box-header"><h4>Energy Summary</h4></div>
+        <div class="annotation-row"><span class="ann-symbol">E_e,T</span><span class="ann-name">Max theoretical energy/cycle (6 kV)</span><span class="ann-val">≈ 9.5 mJ</span></div>
+        <div class="annotation-row"><span class="ann-symbol">E_e</span><span class="ann-name">Best measured energy/cycle (2-pouch)</span><span class="ann-val">≈ 4.98 mJ</span></div>
+        <div class="annotation-row"><span class="ann-symbol">ρ_E</span><span class="ann-name">Exp. energy density (fluid vol.)</span><span class="ann-val">2.0 mJ/cm³</span></div>
+        <div class="annotation-row"><span class="ann-symbol">ρ_E,T</span><span class="ann-name">Theoretical energy density (fluid)</span><span class="ann-val">4.2 mJ/cm³</span></div>
+        <div class="annotation-row"><span class="ann-symbol">η_M</span><span class="ann-name">Max mechanical efficiency</span><span class="ann-val">≈ 23%</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CIRCUIT -->
+  <section class="wiki-section" id="hasel-circuit">
+    <div class="section-header"><div class="section-icon icon-green">🔌</div><div><div class="section-title">Circuit Design</div><div class="section-subtitle">Adapted from Duranti (2017) dielectric fluid transducer circuit</div></div></div>
+    <div class="section-divider"></div>
+    <div class="prose">High-voltage reed relays switch between priming (from storage capacitor C_p), generation (onto C_p), and discharge phases. The Pico Electronics 5VV10-P provides 2000× HV amplification. Architecture adapted from Duranti (2017) constant-voltage circuit for dielectric fluid transducers.</div>
+    <div class="info-box">
+      <div class="annotation-row"><span class="ann-symbol">C_p</span><span class="ann-name">Storage capacitor — primes HASEL and receives generated charge</span><span class="ann-val">4.7 nF</span></div>
+      <div class="annotation-row"><span class="ann-symbol">R_preload</span><span class="ann-name">Maintains 20% Pico load (voltage regulation)</span><span class="ann-val">250 MΩ</span></div>
+      <div class="annotation-row"><span class="ann-symbol">R_limit</span><span class="ann-name">Current limiter, varies to maintain 80% Pico load</span><span class="ann-val">5–15 MΩ</span></div>
+      <div class="annotation-row"><span class="ann-symbol">R2 = R3</span><span class="ann-name">Protect reed relay contacts (max 5 mA)</span><span class="ann-val">2 MΩ each</span></div>
+      <div class="annotation-row"><span class="ann-symbol">S1,S2,S3</span><span class="ann-name">HV reed relays (Cynergy3 DAT72415P) — 24V coil, 15 kV isolation, SPST-NO</span><span class="ann-val">~300 ms delay</span></div>
+      <div class="annotation-row"><span class="ann-symbol">R_measure</span><span class="ann-name">Series resistor + Fluke 80K40 probe → 6000:1 reduction (measuring C_p voltage)</span><span class="ann-val">5 GΩ + 1 GΩ</span></div>
+      <div class="annotation-row"><span class="ann-symbol">HV Amp</span><span class="ann-name">Pico Electronics 5VV10-P — non-isolated, 2000×, 5W max at 2–10 kV</span><span class="ann-val">2–10 kV</span></div>
+    </div>
+    <div class="grid2">
+      <div class="callout callout-amber" style="margin-bottom:0"><strong>Voltage measurement:</strong> Direct probe on C_p gives τ = 1GΩ × 4.7nF = 4.7s — too short to measure. Series resistors → ~5 GΩ total → τ ≈ 23.5s. Trade-off: 30:1 additional signal reduction.</div>
+      <div class="callout callout-blue" style="margin-bottom:0"><strong>Pico regulation:</strong> Unregulated supply — voltage drops at low load. Fixed by 250 MΩ preload parallel with C_p and variable R_limit in series to maintain ≥20% current draw at all times.</div>
+    </div>
+  </section>
+
+  <!-- RESULTS -->
+  <section class="wiki-section" id="hasel-results">
+    <div class="section-header"><div class="section-icon icon-green">📊</div><div><div class="section-title">Experimental Results — Paper 1</div><div class="section-subtitle">Net energy per cycle across 4×5 voltage × force matrix</div></div></div>
+    <div class="section-divider"></div>
+    <div class="prose">Published as "Generating Electricity with HASELs and Their Mechanics" in <em>Energies</em> (MDPI). Full dataset: N ≈ 10–20 per point. Co-authors: Blake Boren &amp; Stephen Chamot (NREL). First experimental demonstration of HASEL energy generation.</div>
+    <div class="stats-row">
+      <div class="stat-box"><div class="stat-val" style="color:var(--green)">4.98 mJ</div><div class="stat-label">Max net energy/cycle (6kV, 2000g)</div></div>
+      <div class="stat-box"><div class="stat-val" style="color:var(--green)">2.49 mJ</div><div class="stat-label">Max per single pouch</div></div>
+      <div class="stat-box"><div class="stat-val" style="color:var(--green)">2.0 mJ/cm³</div><div class="stat-label">Experimental energy density</div></div>
+      <div class="stat-box"><div class="stat-val" style="color:var(--accent)">23%</div><div class="stat-label">Max mechanical efficiency</div></div>
+    </div>
+    <h4 style="font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--text-muted);font-family:var(--font-mono);margin-bottom:8px;">Net Energy (mJ) — Full Test Matrix</h4>
+    <table class="data-table">
+      <thead><tr><th>Voltage</th><th>200 g</th><th>500 g</th><th>1000 g</th><th>1500 g</th><th>2000 g</th></tr></thead>
+      <tbody>
+        <tr><td>3 kV</td><td>0.33 ± 0.10</td><td>0.68 ± 0.09</td><td>1.04 ± 0.08</td><td>1.28 ± 0.10</td><td>1.80 ± 0.14</td></tr>
+        <tr><td>4 kV</td><td>0.58 ± 0.19</td><td>1.16 ± 0.19</td><td>1.76 ± 0.54</td><td>2.14 ± 0.16</td><td>2.96 ± 0.17</td></tr>
+        <tr><td>5 kV</td><td>0.77 ± 0.27</td><td>1.63 ± 0.30</td><td>2.58 ± 0.29</td><td>3.11 ± 0.28</td><td>4.17 ± 0.28</td></tr>
+        <tr><td class="val-highlight">6 kV</td><td>0.83 ± 0.38</td><td>1.90 ± 0.27</td><td>3.15 ± 0.37</td><td>3.74 ± 0.48</td><td class="val-highlight">4.98 ± 0.37</td></tr>
+      </tbody>
+    </table>
+    <div class="callout callout-blue"><strong>Energy formula:</strong> E_e = −½ C_h V₃² + ½ C_p(V₄² − V₃²) + ½ C_l V₄². States 3→4 = generation phase. Priming energy consumed (negative); generation energy recovered (positive).</div>
+    <h4 style="font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--text-muted);font-family:var(--font-mono);margin-bottom:8px;">Comparison to Other Electrostatic Generators</h4>
+    <table class="data-table">
+      <thead><tr><th>Metric</th><th>HASEL (This Work)</th><th>DFT – Duranti 2017</th><th>DEG – Moretti Review</th></tr></thead>
+      <tbody>
+        <tr><td>Exp. energy/cycle</td><td class="val-highlight">2.49 mJ/pouch</td><td>4.8 mJ</td><td>—</td></tr>
+        <tr><td>Exp. energy density (fluid)</td><td class="val-highlight">2.0 mJ/cm³</td><td>—</td><td>—</td></tr>
+        <tr><td>Exp. energy density (film mass)</td><td>85 mJ/g</td><td>179 mJ/g</td><td>up to 780 mJ/g</td></tr>
+        <tr><td>Mechanical efficiency</td><td class="val-highlight">23%</td><td>~30%</td><td>—</td></tr>
+        <tr><td>Self-healing</td><td class="val-highlight">Yes (dielectric fluid)</td><td>Yes</td><td>No (solid film)</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- FREQ STUDY -->
+  <section class="wiki-section" id="hasel-freq">
+    <div class="section-header"><div class="section-icon icon-green">📈</div><div><div class="section-title">Power Output &amp; Frequency Study</div><div class="section-subtitle">NREL MEGSRP Appointment — Jan–Jul 2025</div></div></div>
+    <div class="section-divider"></div>
+    <div class="prose">Investigates <strong>cyclic energy harvesting</strong> and <strong>power density vs. cycling frequency</strong> (0.5–20 Hz, 2–5 kV). Key question: does power scale linearly as P = E·f, or do viscous losses or circuit limits reduce performance at higher frequencies?</div>
+    <div class="cards">
+      <div class="card"><div class="card-tag">Hypothesis</div><h3>Linear P vs. Frequency</h3><p>If HASEL is in the inertial regime (Rothemund 2020), energy/cycle is constant and P = E·f is linear. Artimus confirmed this. Experiment will verify quantitatively.</p></div>
+      <div class="card"><div class="card-tag">Circuit Innovation</div><h3>AC Coupling for Self-Sensing</h3><p>HV DC priming + low-amplitude high-freq AC superimposed. Coupling capacitor = generator bank AND AC conduit. Sensing is never lost during open-circuit generation phase.</p></div>
+      <div class="card"><div class="card-tag">Hardware</div><h3>Motorized Test Bench</h3><p>ClearPath servo motor + ball screw (5.08 mm/rev, 800 cts/rev, 7 mm free stroke). NI cRIO DAQ + Labview at 1 kHz. Raspberry Pi controls motor PWM. Data to USB as TDMS.</p></div>
+      <div class="card"><div class="card-tag">Circuit Limits</div><h3>Frequency Constraints</h3><p>Reed relay ~300 ms → ~3 Hz limit (fully switched). RC: τ = 4.7 nF × 2 MΩ = 9.4 ms → 106 Hz limit. HASEL inertial/viscous regime per oil viscosity and geometry.</p></div>
+    </div>
+    <h4 style="font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--text-muted);font-family:var(--font-mono);margin-bottom:8px;">Test Matrix (Paper 2)</h4>
+    <table class="data-table">
+      <thead><tr><th>Independent Variable</th><th>Range</th><th>Dependent Variables</th></tr></thead>
+      <tbody>
+        <tr><td>Cycling frequency</td><td>0.5 – 20 Hz</td><td>Net energy/cycle, power output (P = E·f)</td></tr>
+        <tr><td>Priming voltage</td><td>2 – 5 kV</td><td>Energy per cycle, power density</td></tr>
+        <tr><td>Timing: scheduled vs. sensor feedback</td><td>Fixed / feedback-controlled</td><td>Energy deficiency vs. ideal schedule</td></tr>
+      </tbody>
+    </table>
+    <div class="callout callout-blue"><strong>Rothemund (2020):</strong> HASEL is inertial if τ_v/τ_i = μwL^½/Mg^½ ≪ 1. In the inertial regime, t_n ∝ L^½, independent of viscosity. Artimus commercial HASELs operate here — linear P vs. f expected.</div>
+  </section>
+
+  <!-- SELF-SENSING -->
+  <section class="wiki-section" id="hasel-selfsensing">
+    <div class="section-header"><div class="section-icon icon-green">📡</div><div><div class="section-title">Capacitive Self-Sensing</div><div class="section-subtitle">AC impedance sensing for real-time deformation feedback</div></div></div>
+    <div class="section-divider"></div>
+    <div class="prose">By superimposing a low-amplitude, high-frequency AC signal on the driving voltage, capacitance — and therefore deformation — can be read in real time without additional sensors. Known as <strong>Data-over-Power / Power Line Communication</strong>. Artimus Robotics demonstrates single-digit gram sensitivity on commercial HASELs.</div>
+    <div class="eq-box">X_C = 1 / (ω · C)  ·  Z = √(R² + X_C²)  ·  C ≈ 1 / (2π f X_C)</div>
+    <div class="cards">
+      <div class="card"><div class="card-tag">Key Challenge</div><h3>Sensing During Open-Circuit Generation</h3><p>Standard DEG self-sensing fails when the device is disconnected from the HV supply. The dual-purpose coupling capacitor (C_p = generator bank) keeps the AC path active — sensing never interrupted.</p></div>
+      <div class="card"><div class="card-tag">Signal Processing</div><h3>Rizzello RLS Algorithm</h3><p>Recursive Least Squares on discretized RC circuit state equation extracts capacitance each time step. Issues above ~2 Hz from filtering delay. Separate model branches for generation and discharge phases.</p></div>
+      <div class="card"><div class="card-tag">Artimus Guidance</div><h3>Implementation Notes</h3><p>Target differential (not absolute) capacitance. Supply AC on low side (Ly 2021). Use ≥10 kHz for low impedance. Thin-film capacitors (not ceramic) — ceramic capacitance drops significantly with voltage.</p></div>
+    </div>
+  </section>
+
+  <!-- MEMCAPACITANCE -->
+  <section class="wiki-section" id="hasel-memcap">
+    <div class="section-header"><div class="section-icon icon-green">🔬</div><div><div class="section-title">HASEL Memcapacitance</div><div class="section-subtitle">Nonlinear C vs. V characterization with hysteresis — April 2026</div></div></div>
+    <div class="section-divider"></div>
+    <div class="prose">Goal: map the HASEL's <strong>nonlinear capacitance as a function of voltage with hysteresis</strong> — producing Q vs. V and C vs. V plots at different bias frequencies. This characterizes the memcapacitive behavior (capacitance depends on voltage history) and is key to understanding frequency-dependent energy harvesting.</div>
+    <div class="callout callout-blue"><strong>Method (Acome 2018 approach):</strong> Superimpose a low-amplitude triangular wave (~100 Hz) onto a large-amplitude sinusoidal bias (~1 Hz, ±5 kV). Since I_c = C·dV/dt, the triangular wave induces a square-wave current whose amplitude is proportional to capacitance. As the bias sweeps, the AC current amplitude traces C vs. V — including hysteresis from internal fluid dynamics.</div>
+    <div class="grid2">
+      <div class="info-box">
+        <div class="info-box-header"><h4>Signal Parameters</h4></div>
+        <div class="annotation-row"><span class="ann-symbol">Bias</span><span class="ann-name">Low-freq sinusoidal carrier</span><span class="ann-val">±5 kV, ~1 Hz</span></div>
+        <div class="annotation-row"><span class="ann-symbol">AC probe</span><span class="ann-name">High-freq triangular wave (probes capacitance)</span><span class="ann-val">~5% carrier amp, ~100 Hz</span></div>
+        <div class="annotation-row"><span class="ann-symbol">Freq ratio</span><span class="ann-name">AC / bias (should be ≫ 1 for quasi-static bias)</span><span class="ann-val">~100×</span></div>
+        <div class="annotation-row"><span class="ann-symbol">Load</span><span class="ann-name">Applied weight to partially stretch HASEL</span><span class="ann-val">~100 g</span></div>
+        <div class="annotation-row"><span class="ann-symbol">Variable</span><span class="ann-name">Vary bias frequency to map frequency-dependent hysteresis</span><span class="ann-val">Multiple runs</span></div>
+      </div>
+      <div class="info-box">
+        <div class="info-box-header"><h4>Equipment</h4></div>
+        <div class="annotation-row"><span class="ann-symbol">Amplifier</span><span class="ann-name">Trek 10/10B-HS — 1000 V/V, ±10 kV, ±10 mA, slew &gt;700 V/µs</span></div>
+        <div class="annotation-row"><span class="ann-symbol">HASEL</span><span class="ann-name">2-pouch Peano-HASEL (old style)</span></div>
+        <div class="annotation-row"><span class="ann-symbol">Signal gen</span><span class="ann-name">Waveform generator (bias + triangular wave outputs)</span></div>
+        <div class="annotation-row"><span class="ann-symbol">DAQ</span><span class="ann-name">Oscilloscope or DAQ for current + voltage measurement</span></div>
+      </div>
+    </div>
+    <div class="callout callout-amber"><strong>Physical interpretation:</strong> Hysteresis in C vs. V arises because internal fluid dynamics have a finite response time — at high bias frequencies, fluid cannot fully redistribute before voltage reverses, so capacitance traces a different path on charge vs. discharge. Slower bias → more equilibrium → less hysteresis.</div>
+    <div class="callout callout-green"><strong>Connection to energy harvesting:</strong> The area enclosed by the Q–V loop is the net electrical energy harvested per cycle. Memcapacitance measurements directly visualize this quantity and how it changes with frequency and voltage — linking to the power vs. frequency MEGSRP study.</div>
+  </section>
+
+  <!-- NEBULA EH -->
+  <section class="wiki-section" id="nebula-eh">
+    <div class="section-header"><div class="section-icon icon-green">🌊</div><div><div class="section-title">Nebula EH on Bending Structure</div><div class="section-subtitle">Gantry base-excitation experiments — Oct–Dec 2025</div></div></div>
+    <div class="section-divider"></div>
+    <div class="prose">Integrates HASEL energy harvesting with bending motion — simulating a robotic fish in a Kármán vortex street. The gantry provides sinusoidal base excitation; HASEL pouches on the bending structure generate electricity. DIC captures the zipped area as a proxy for capacitance change. The phase relationship between base excitation and HASEL strain governs when to trigger the EH cycle.</div>
+    <div class="callout callout-amber"><strong>First attempt (Oct 2025) — failed:</strong> No energy generated. The front HASEL was broken, and the timing code was phased for it — experiments ran 180° out of phase. Subsequent FRF sweeps showed π/2 phase offset between base excitation and HASEL strain at 1 Hz. Corrected for second trial.</div>
+    <div class="cards">
+      <div class="card"><div class="card-tag">Dec 3, 2025</div><h3>Natural Frequency Identification</h3><p>Modal impact hammer: ωₙ ≈ 12 Hz (5 mm TPU + HASELs), ≈ 9 Hz (slacked). New 2.5 mm skeleton → ωₙ ≈ 6 Hz. Bending visually confirmed at 6 Hz excitation.</p></div>
+      <div class="card"><div class="card-tag">Dec 17, 2025</div><h3>DIC Energy Harvesting Tests</h3><p>HASEL slacked with standoffs for more strain per bend. ωₙ ≈ 4 Hz. Square wave actuation (180° offset, 4 Hz, 5 kV). Phase offset φ ≈ −0.43 ± 0.05 rad measured via DIC.</p></div>
+      <div class="card"><div class="card-tag">Model</div><h3>FEA Under Base Excitation</h3><p>FEA predicts capacitance change as a function of frequency, amplitude, and phase. Used to design optimal EH cycle timing and predict power output across a frequency sweep.</p></div>
+      <div class="card"><div class="card-tag">Key Insight</div><h3>Resonance Maximizes Power</h3><p>At resonance, large deformation → large capacitance swing → more energy/cycle. Optimal phase offset between EH trigger and base excitation shifts with frequency per the FRF.</p></div>
+    </div>
+    <div class="info-box">
+      <div class="info-box-header"><h4>Gantry Experimental Settings</h4></div>
+      <div class="annotation-row"><span class="ann-symbol">LDV BW</span><span class="ann-name">Vibrometer bandwidth</span><span class="ann-val">1 kHz</span></div>
+      <div class="annotation-row"><span class="ann-symbol">Velo range</span><span class="ann-name">Max ~0.38 m/s at 13 rad/s × 0.03 m</span><span class="ann-val">1 m/s</span></div>
+      <div class="annotation-row"><span class="ann-symbol">Disp range</span><span class="ann-name">Max 60 mm peak-to-peak</span><span class="ann-val">100 mm</span></div>
+      <div class="annotation-row"><span class="ann-symbol">DAQ</span><span class="ann-name">dSpace + Artimus 8-ch ARDI supply</span><span class="ann-val">192.168.202.220</span></div>
+      <div class="annotation-row"><span class="ann-symbol">Env.</span><span class="ann-name">October: 18°C 60% RH · November: 22°C 45% RH</span><span class="ann-val">—</span></div>
+    </div>
+  </section>
+
+  <div style="height:40px"></div>
+  </div>
+</main>
+
+<script src="shared.js"></script>
+</body>
+</html>

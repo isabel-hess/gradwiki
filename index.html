@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Isabel Hess Lehenbauer · Graduate Research Wiki</title>
+<link rel="stylesheet" href="shared.css">
+<style>
+/* Index-specific: no sidebar, full-width layout */
+body { grid-template-columns: 1fr; }
+main  { height: calc(100vh - 56px); overflow-y: auto; }
+
+/* Hero */
+.index-hero {
+  padding: 64px 64px 52px;
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  position: relative; overflow: hidden;
+}
+.index-hero::before {
+  content:''; position:absolute; top:-60px; right:-60px;
+  width:380px; height:380px;
+  background: radial-gradient(circle, rgba(42,95,212,0.06) 0%, transparent 70%);
+  pointer-events:none;
+}
+.index-hero::after {
+  content:''; position:absolute; bottom:-40px; left:200px;
+  width:260px; height:260px;
+  background: radial-gradient(circle, rgba(29,122,66,0.04) 0%, transparent 70%);
+  pointer-events:none;
+}
+.hero-eyebrow { font-family:var(--font-mono); font-size:11px; letter-spacing:.12em; text-transform:uppercase; color:var(--accent); margin-bottom:14px; }
+.index-hero h1 { font-family:var(--font-serif); font-size:3rem; font-weight:400; line-height:1.1; letter-spacing:-0.025em; color:var(--text); margin-bottom:16px; max-width:700px; }
+.index-hero h1 em { font-style:italic; color:var(--text-muted); }
+.index-hero p { color:var(--text-muted); font-size:15px; max-width:540px; margin-bottom:28px; line-height:1.7; }
+.hero-chips { display:flex; gap:7px; flex-wrap:wrap; }
+
+/* Section grid */
+.hub-content { padding: 48px 64px 72px; }
+.hub-group { margin-bottom: 48px; }
+.hub-group-header {
+  display: flex; align-items: center; gap: 10px;
+  margin-bottom: 18px; padding-bottom: 12px;
+  border-bottom: 1px solid var(--border);
+}
+.hub-group-icon { font-size: 20px; }
+.hub-group-title { font-family: var(--font-serif); font-size: 1.35rem; font-weight: 400; color: var(--text); }
+.hub-group-subtitle { font-family: var(--font-mono); font-size: 11px; color: var(--text-faint); text-transform: uppercase; letter-spacing: .08em; margin-left: auto; }
+
+.section-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 14px; }
+
+.section-card {
+  display: block; text-decoration: none;
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: 11px; padding: 20px 22px;
+  transition: border-color 0.15s, box-shadow 0.15s, transform 0.15s;
+  position: relative; overflow: hidden;
+}
+.section-card:hover {
+  border-color: var(--border-light);
+  box-shadow: 0 4px 18px rgba(0,0,0,0.08);
+  transform: translateY(-1px);
+}
+.section-card .card-stripe {
+  position: absolute; top: 0; left: 0; right: 0; height: 3px; border-radius: 11px 11px 0 0;
+}
+.sc-icon { font-size: 22px; margin-bottom: 10px; }
+.sc-title { font-size: 14px; font-weight: 600; color: var(--text); margin-bottom: 5px; line-height: 1.3; }
+.sc-desc  { font-size: 12.5px; color: var(--text-muted); line-height: 1.55; margin-bottom: 12px; }
+.sc-meta  { display: flex; gap: 6px; flex-wrap: wrap; align-items: center; }
+
+/* big CTA cards */
+.aim-card {
+  display: flex; flex-direction: column;
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: 13px; padding: 26px 28px 22px;
+  text-decoration: none;
+  transition: border-color 0.15s, box-shadow 0.15s, transform 0.15s;
+  position: relative; overflow: hidden;
+}
+.aim-card:hover { border-color: var(--border-light); box-shadow: 0 5px 22px rgba(0,0,0,0.09); transform: translateY(-2px); }
+.aim-card .card-stripe { position:absolute; top:0; left:0; right:0; height:3px; border-radius:13px 13px 0 0; }
+.aim-num { font-family:var(--font-mono); font-size:10px; text-transform:uppercase; letter-spacing:.1em; color:var(--text-faint); margin-bottom:10px; }
+.aim-title { font-family:var(--font-serif); font-size:1.35rem; font-weight:400; color:var(--text); margin-bottom:8px; line-height:1.2; }
+.aim-desc  { font-size:13px; color:var(--text-muted); line-height:1.6; flex:1; margin-bottom:18px; }
+.aim-arrow { font-family:var(--font-mono); font-size:12px; color:var(--accent); }
+
+.aims-grid { display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-bottom:48px; }
+@media(max-width:700px){ .aims-grid { grid-template-columns:1fr; } }
+
+/* timeline strip on index */
+.timeline-strip {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: 11px; padding: 24px 28px;
+}
+</style>
+</head>
+<body>
+
+<!-- SHARED HEADER -->
+<header class="site-header">
+  <a href="index.html" class="logo">
+    <div class="logo-icon">🐟</div>
+    <div class="logo-text">Isabel Hess Lehenbauer &ndash; <span>Research Wiki</span></div>
+  </a>
+  <nav class="top-nav">
+    <a href="index.html"         class="active"><span class="nav-icon">🗺</span> Overview</a>
+    <a href="nebula.html"               ><span class="nav-icon">🐟</span> Nebula</a>
+    <a href="energy.html"               ><span class="nav-icon">⚡</span> Energy Harvesting</a>
+    <a href="side-projects.html"        ><span class="nav-icon">🔧</span> Side Projects</a>
+    <a href="publications.html"         ><span class="nav-icon">📄</span> Publications</a>
+    <a href="background.html"           ><span class="nav-icon">📚</span> Background</a>
+  </nav>
+  <div class="header-right">
+    <div class="global-search">
+      <span>⌕</span>
+      <input type="text" id="globalSearch" placeholder="Search all pages…" autocomplete="off">
+    </div>
+    <div class="header-meta">UF · MAE PhD</div>
+  </div>
+</header>
+
+<main>
+
+<!-- HERO -->
+<div class="index-hero">
+  <div class="hero-eyebrow">PhD Dissertation · University of Florida · MAE</div>
+  <h1>Fish Robots, Soft Actuators<br>&amp; Electrostatic Energy Harvesting</h1>
+  <p>A multi-year experimental and computational program designing, building, and characterizing a HASEL-actuated soft robotic fish — and demonstrating electricity generation from artificial muscles for the first time.</p>
+  <div class="hero-chips">
+    <span class="chip chip-blue">Soft Robotics</span>
+    <span class="chip chip-green">Energy Harvesting</span>
+    <span class="chip chip-amber">HASEL Actuators</span>
+    <span class="chip chip-teal">Fluid–Structure Interaction</span>
+    <span class="chip chip-purple">Digital Image Correlation</span>
+    <span class="chip chip-blue">Laser Doppler Vibrometry</span>
+    <span class="chip chip-green">NREL Collaboration</span>
+  </div>
+</div>
+
+<div class="hub-content">
+
+  <!-- DISSERTATION AIMS -->
+  <div class="hub-group">
+    <div class="hub-group-header">
+      <span class="hub-group-icon">🎯</span>
+      <span class="hub-group-title">Dissertation Aims</span>
+    </div>
+    <div class="aims-grid">
+
+      <a href="nebula.html" class="aim-card">
+        <div class="card-stripe" style="background:var(--accent)"></div>
+        <div class="aim-num">Aim 1</div>
+        <div class="aim-title">Soft Robotic Fish — Nebula</div>
+        <div class="aim-desc">Design, fabrication, and experimental characterization of a continuously flexible, HASEL-actuated robotic trout. Kinematic analysis in quiescent water with DIC + LDV. EHE beam model for quiescent and uniform flow.</div>
+        <div class="sc-meta" style="margin-bottom:14px">
+          <span class="pill pill-done">Journal Published</span>
+          <span class="pill pill-done">RoboSoft 2025</span>
+        </div>
+        <div class="aim-arrow">Explore Nebula →</div>
+      </a>
+
+      <a href="energy.html" class="aim-card">
+        <div class="card-stripe" style="background:var(--green)"></div>
+        <div class="aim-num">Aim 2</div>
+        <div class="aim-title">HASEL Energy Harvesting</div>
+        <div class="aim-desc">First experimental demonstration of electricity generation from Peano-HASEL actuators. Constant-voltage cycle, circuit design, 2.49 mJ/pouch, 23% mechanical efficiency. Frequency dependence, self-sensing, memcapacitance.</div>
+        <div class="sc-meta" style="margin-bottom:14px">
+          <span class="pill pill-done">Paper 1 Published</span>
+          <span class="pill pill-active">Paper 2 In Progress</span>
+        </div>
+        <div class="aim-arrow">Explore Energy Harvesting →</div>
+      </a>
+
+    </div>
+  </div>
+
+  <!-- SIDE PROJECTS -->
+  <div class="hub-group">
+    <div class="hub-group-header">
+      <span class="hub-group-icon">🔧</span>
+      <span class="hub-group-title">Side Projects</span>
+      <span class="hub-group-subtitle">Independent of dissertation aims</span>
+    </div>
+    <div class="section-grid">
+
+      <a href="side-projects.html#gantry" class="section-card">
+        <div class="card-stripe" style="background:var(--amber)"></div>
+        <div class="sc-icon">🦾</div>
+        <div class="sc-title">Gantry System Build</div>
+        <div class="sc-desc">Custom 3-axis servo-driven underwater oscillation platform. DYN4 drives, Galil controller, dSpace integration. Used for Nebula base-excitation energy harvesting experiments.</div>
+        <div class="sc-meta"><span class="pill pill-done">Built</span></div>
+      </a>
+
+      <a href="side-projects.html#dic" class="section-card">
+        <div class="card-stripe" style="background:var(--purple)"></div>
+        <div class="sc-icon">🎥</div>
+        <div class="sc-title">Underwater DIC (NREL Contract)</div>
+        <div class="sc-desc">Evaluated DIC and videogrammetry for tracking flexible WEC deformation in NREL's wave flume. Snell's Law analysis; camera angle tests; recommendation: underwater camera housing.</div>
+        <div class="sc-meta"><span class="pill pill-done">Completed</span></div>
+      </a>
+
+    </div>
+  </div>
+
+  <!-- QUICK LINKS -->
+  <div class="hub-group">
+    <div class="hub-group-header">
+      <span class="hub-group-icon">🔗</span>
+      <span class="hub-group-title">Quick Access</span>
+    </div>
+    <div class="section-grid">
+
+      <a href="publications.html" class="section-card">
+        <div class="card-stripe" style="background:var(--purple)"></div>
+        <div class="sc-icon">📄</div>
+        <div class="sc-title">Publications &amp; Conferences</div>
+        <div class="sc-desc">SMASIS 2022, 2023, 2024, 2025 · RoboSoft 2025 · Energies (MDPI) · Smart Materials &amp; Structures · NREL MEGSRP · Senate Robotics Day.</div>
+        <div class="sc-meta">
+          <span class="pill pill-done">2 Journals</span>
+          <span class="pill pill-done">4 Conferences</span>
+          <span class="pill pill-active">1 In Progress</span>
+        </div>
+      </a>
+
+      <a href="background.html" class="section-card">
+        <div class="card-stripe" style="background:var(--teal)"></div>
+        <div class="sc-icon">📚</div>
+        <div class="sc-title">Background Reading</div>
+        <div class="sc-desc">What is a HASEL? Electrostatic zipping, variable capacitance, self-healing, inertial vs. viscous regimes. EHE modeling: Euler-Bernoulli beam, Lighthill theory, Galerkin method, MAC &amp; traveling index.</div>
+        <div class="sc-meta"><span class="chip chip-teal">Reference</span></div>
+      </a>
+
+    </div>
+  </div>
+
+  <!-- TIMELINE STRIP -->
+  <div class="hub-group">
+    <div class="hub-group-header">
+      <span class="hub-group-icon">📅</span>
+      <span class="hub-group-title">Research Timeline</span>
+    </div>
+    <div class="timeline-strip">
+      <div class="timeline">
+        <div class="timeline-item complete"><div class="tl-date">Fall 2021</div><div class="tl-title">EHE Model — Quiescent Flow</div><div class="tl-body">MATLAB Galerkin simulation with nonlinear fluid damping.</div></div>
+        <div class="timeline-item complete"><div class="tl-date">Spring 2022</div><div class="tl-title">Nebula Design + SMASIS22</div><div class="tl-body">Parametric body design. Compliance &amp; traveling wave generation.</div></div>
+        <div class="timeline-item complete"><div class="tl-date">Fall 2022</div><div class="tl-title">Nebula Fabrication &amp; Air Testing</div><div class="tl-body">TPU skeleton, Ecoflex silicone cast, LDV + DIC in air.</div></div>
+        <div class="timeline-item complete"><div class="tl-date">Spring 2023</div><div class="tl-title">Nebula Aquarium Testing</div><div class="tl-body">DIC + LDV at 3 natural frequencies. MAC and traveling index analysis.</div></div>
+        <div class="timeline-item complete"><div class="tl-date">Fall 2023</div><div class="tl-title">SMASIS23 (3rd place) + NREL Contracts Begin</div><div class="tl-body">HASEL EH and Underwater DIC contracts awarded.</div></div>
+        <div class="timeline-item complete"><div class="tl-date">Jan–Nov 2024</div><div class="tl-title">HASEL EH Paper 1 + Nebula Journal</div><div class="tl-body">Full 4×5 EH test matrix. Nebula SMS journal submitted June 2024. EH Paper 1 submitted Nov 2024.</div></div>
+        <div class="timeline-item complete"><div class="tl-date">Apr 2025</div><div class="tl-title">RoboSoft 2025 — Nebula v2</div><div class="tl-body">Lausanne. Distributed muscles + sensing. 44% thrust increase with phase offset.</div></div>
+        <div class="timeline-item active"><div class="tl-date">Jan–Jul 2025 (NREL MEGSRP)</div><div class="tl-title">Power &amp; Frequency Study</div><div class="tl-body">Cyclic EH with self-sensing. Power density vs. frequency 0.5–20 Hz.</div></div>
+        <div class="timeline-item active"><div class="tl-date">Oct–Dec 2025</div><div class="tl-title">Nebula EH on Bending Structure</div><div class="tl-body">Gantry base-excitation experiments. Phase relationship study.</div></div>
+        <div class="timeline-item active"><div class="tl-date">April 2026</div><div class="tl-title">HASEL Memcapacitance</div><div class="tl-body">Nonlinear C vs. V with hysteresis — AC superposition method, Trek 10/10.</div></div>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /hub-content -->
+</main>
+
+<script src="shared.js"></script>
+</body>
+</html>

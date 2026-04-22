@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Side Projects · Isabel Hess Research Wiki</title>
+<link rel="stylesheet" href="shared.css">
+</head>
+<body>
+
+<header class="site-header">
+  <a href="index.html" class="logo">
+    <div class="logo-icon">🐟</div>
+    <div class="logo-text">Isabel Hess &ndash; <span>Research Wiki</span></div>
+  </a>
+  <nav class="top-nav">
+    <a href="index.html"                     ><span class="nav-icon">🗺</span> Overview</a>
+    <a href="nebula.html"                    ><span class="nav-icon">🐟</span> Nebula</a>
+    <a href="energy.html"                    ><span class="nav-icon">⚡</span> Energy Harvesting</a>
+    <a href="side-projects.html" class="active"><span class="nav-icon">🔧</span> Side Projects</a>
+    <a href="publications.html"              ><span class="nav-icon">📄</span> Publications</a>
+    <a href="background.html"               ><span class="nav-icon">📚</span> Background</a>
+  </nav>
+  <div class="header-right">
+    <div class="global-search"><span>⌕</span><input type="text" id="globalSearch" placeholder="Search all pages…" autocomplete="off"></div>
+    <div class="header-meta">Side Projects</div>
+  </div>
+</header>
+
+<aside class="sidebar">
+  <div style="padding:0 12px 10px">
+    <div style="display:flex;align-items:center;gap:6px;padding:6px 9px;background:var(--bg);border:1px solid var(--border);border-radius:7px">
+      <span style="color:var(--text-faint);font-size:13px">⌕</span>
+      <input type="text" id="sidebarSearch" placeholder="Search this page…" autocomplete="off"
+        style="border:none;background:transparent;outline:none;color:var(--text);font-family:var(--font-mono);font-size:12px;width:100%">
+    </div>
+  </div>
+  <div class="no-results" id="sidebarNoResults">No matches</div>
+
+  <div class="nav-label">Side Projects</div>
+  <a href="#gantry" class="active" data-terms="gantry system build galil dyn4 servo z brake oscillation platform three axis ball screw encoder dspace trigger memory"><span class="nav-dot" style="background:var(--amber)"></span>Gantry System Build</a>
+  <a href="#dic"                  data-terms="dic underwater deformation nrel wave flume snell camera angle vro calibration wec videogrammetry contract subset speckle"><span class="nav-dot" style="background:var(--amber)"></span>Underwater DIC (NREL Contract)</a>
+</aside>
+
+<main>
+  <div class="page-hero" style="background:linear-gradient(135deg, var(--surface) 0%, #fdf8f0 100%)">
+    <div class="page-hero-tag" style="color:var(--amber)">Independent Projects</div>
+    <h1>Side Projects</h1>
+    <p>Lab infrastructure and contract work independent of the dissertation aims — a 3-axis gantry system for Nebula's water tank experiments, and an NREL contract evaluating underwater deformation measurement techniques.</p>
+  </div>
+
+  <div class="content">
+
+  <!-- GANTRY -->
+  <section class="wiki-section" id="gantry">
+    <div class="section-header"><div class="section-icon icon-amber">🦾</div><div><div class="section-title">Gantry System Build</div><div class="section-subtitle">3-axis servo-driven underwater oscillation platform — independent project</div></div></div>
+    <div class="section-divider"></div>
+    <div class="prose">A custom 3-axis gantry designed and built to mount Nebula in the water tank and provide controlled oscillatory base excitation. This is a standalone lab infrastructure project, independent of both dissertation aims and the NREL contract. The gantry feeds directly into the <a href="energy.html#nebula-eh" style="color:var(--accent)">Nebula EH on Bending Structure</a> experiments.</div>
+    <div class="grid2">
+      <div class="info-box">
+        <div class="info-box-header"><h4>Hardware Specs</h4></div>
+        <div class="annotation-row"><span class="ann-symbol">Axes</span><span class="ann-name">Three servo-driven axes (DYN4 drives)</span></div>
+        <div class="annotation-row"><span class="ann-symbol">Controller</span><span class="ann-name">Galil motion controller, interfaced via dSpace</span></div>
+        <div class="annotation-row"><span class="ann-symbol">Ball screw</span><span class="ann-name">5.08 mm/rev leadscrew, 800 cts/rev → 1102 cts full 7 mm stroke</span></div>
+        <div class="annotation-row"><span class="ann-symbol">Z brake</span><span class="ann-name">24V electromagnetic brake via Galil IO module pin 44</span></div>
+        <div class="annotation-row"><span class="ann-symbol">GUI</span><span class="ann-name">Custom oscilloscope-interface .exe (Desktop/dist folder)</span></div>
+      </div>
+      <div class="info-box">
+        <div class="info-box-header"><h4>Operation Notes</h4></div>
+        <div class="annotation-row"><span class="ann-symbol">IPs</span><span class="ann-name">Galil USB: 169.254.249.205 · Router: 192.168.202.220</span></div>
+        <div class="annotation-row"><span class="ann-symbol">Homing</span><span class="ann-name">Set machine zero each session via ClearPath MSP software</span></div>
+        <div class="annotation-row"><span class="ann-symbol">Trigger</span><span class="ann-name">Gantry waits for dSpace digital trigger before moving (Galil code line 23)</span></div>
+        <div class="annotation-row"><span class="ann-symbol">Memory</span><span class="ann-name">Cannot run &gt;6 cycles at 0.5 Hz — memory overrun. Use ≥1.25 Hz for long runs.</span></div>
+      </div>
+    </div>
+    <div class="callout callout-blue"><strong>Integration with Nebula EH experiments:</strong> The gantry provides the sinusoidal base excitation that drives bending of the HASEL structure in the <a href="energy.html#nebula-eh" style="color:var(--accent)">energy harvesting on bending</a> experiments. The gantry encoder signal is logged through dSpace alongside LDV, DIC, and HASEL voltage signals.</div>
+  </section>
+
+  <!-- DIC -->
+  <section class="wiki-section" id="dic">
+    <div class="section-header"><div class="section-icon icon-amber">🎥</div><div><div class="section-title">Underwater DIC — NREL Contract</div><div class="section-subtitle">Evaluating deformation measurement for NREL's wave flume — separate contract</div></div></div>
+    <div class="section-divider"></div>
+    <div class="prose">A separate NREL contract (not a dissertation aim) to evaluate how to track the deformation of a flexible surging wave energy converter (flexWEC) inside NREL's wave flume (2.5 m wide, 1.3 m deep, 0.5–5 s period). The flume has viewing windows only on one side. We tested DIC with cameras outside the tank at multiple angles, and straight-on DIC as a proxy for underwater camera performance.</div>
+    <div class="callout callout-blue"><strong>Snell's Law constraint:</strong> Light from water (n = 1.33) to air (n = 1) undergoes total internal reflection at θ_crit = arcsin(1/1.33) = 48.8°. Usable camera angles are less than 90° from the tank wall normal, but refraction heavily distorts images at large angles even well below critical.</div>
+    <h4 style="font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--text-muted);font-family:var(--font-mono);margin-bottom:8px;">Angle Test Results (24 mm wide-angle lens)</h4>
+    <table class="data-table">
+      <thead><tr><th>Outside Angle θ</th><th>Internal Angle θ' (Snell)</th><th>Speckle Size</th><th>Outcome</th></tr></thead>
+      <tbody>
+        <tr><td>75°</td><td>46°</td><td>3–4 px (too small)</td><td>Cannot focus on speckles. Extreme distortion.</td></tr>
+        <tr><td>45°</td><td>32°</td><td>5 px (marginal)</td><td>Very difficult to focus. Low contrast.</td></tr>
+        <tr><td>37° ✓</td><td>~27°</td><td>—</td><td>Successful 4th-order VRO calibration. Poor data quality (large dropout patches during deformation).</td></tr>
+        <tr><td>0° ✓✓</td><td>0°</td><td>5–10 px (good)</td><td>Good calibration and tracking. Recommended baseline for underwater camera placement.</td></tr>
+      </tbody>
+    </table>
+    <div class="callout callout-green"><strong>Recommendation:</strong> Place DIC cameras <strong>underwater</strong> in the flume for a straight-on view. Cameras outside the tank achieve only marginal quality even at the shallowest feasible angles. NREL agreed to pursue underwater DIC housing.</div>
+    <div class="grid2">
+      <div class="info-box">
+        <div class="info-box-header"><h4>DIC Setup Notes</h4></div>
+        <div class="annotation-row"><span class="ann-symbol">VRO</span><span class="ann-name">Variable Ray Origin calibration (accounts for glass refraction)</span><span class="ann-val">4th order</span></div>
+        <div class="annotation-row"><span class="ann-symbol">Aperture</span><span class="ann-name">Smallest setting for maximum depth of field</span><span class="ann-val">F22</span></div>
+        <div class="annotation-row"><span class="ann-symbol">Acq. rate</span><span class="ann-name">Image acquisition rate</span><span class="ann-val">25 fps</span></div>
+        <div class="annotation-row"><span class="ann-symbol">Subset</span><span class="ann-name">DIC correlation subset size (increased for robustness at shallow angle)</span><span class="ann-val">41 px</span></div>
+        <div class="annotation-row"><span class="ann-symbol">Speckle</span><span class="ann-name">Target speckle diameter in images</span><span class="ann-val">5–10 px</span></div>
+      </div>
+      <div class="info-box">
+        <div class="info-box-header"><h4>Contract Timeline</h4></div>
+        <div class="annotation-row"><span class="ann-symbol">Oct 2023</span><span class="ann-name">Contract awarded by NREL</span></div>
+        <div class="annotation-row"><span class="ann-symbol">Jan 2024</span><span class="ann-name">Angle tests completed — 37° best outside-tank option</span></div>
+        <div class="annotation-row"><span class="ann-symbol">Feb 2024</span><span class="ann-name">Results reported to NREL → recommendation: underwater DIC</span></div>
+        <div class="annotation-row"><span class="ann-symbol">Summer 2024</span><span class="ann-name">Specify underwater DIC system with NREL computational sciences group</span></div>
+      </div>
+    </div>
+  </section>
+
+  <div style="height:40px"></div>
+  </div>
+</main>
+
+<script src="shared.js"></script>
+</body>
+</html>

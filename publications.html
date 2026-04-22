@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Publications · Isabel Hess Research Wiki</title>
+<link rel="stylesheet" href="shared.css">
+<style>
+.pub-entry {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 20px 22px;
+  margin-bottom: 13px;
+  transition: border-color 0.15s, box-shadow 0.12s;
+  position: relative;
+}
+.pub-entry:hover { border-color: var(--border-light); box-shadow: 0 2px 10px rgba(0,0,0,0.06); }
+.pub-stripe { position:absolute; top:0; left:0; width:3px; height:100%; border-radius:10px 0 0 10px; }
+.pub-meta { display:flex; align-items:center; gap:8px; flex-wrap:wrap; margin-bottom:7px; }
+.pub-venue { font-family:var(--font-mono); font-size:11px; color:var(--text-faint); text-transform:uppercase; letter-spacing:.07em; }
+.pub-title { font-size:15px; font-weight:600; color:var(--text); margin-bottom:6px; line-height:1.35; }
+.pub-authors { font-size:12.5px; color:var(--text-muted); margin-bottom:8px; }
+.pub-abstract { font-size:12.5px; color:var(--text-muted); line-height:1.6; margin-bottom:10px; display:none; }
+.pub-abstract.open { display:block; }
+.pub-footer { display:flex; align-items:center; gap:10px; flex-wrap:wrap; }
+.toggle-abstract { font-family:var(--font-mono); font-size:11px; color:var(--accent); background:none; border:none; cursor:pointer; padding:0; }
+.toggle-abstract:hover { text-decoration:underline; }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <a href="index.html" class="logo">
+    <div class="logo-icon">🐟</div>
+    <div class="logo-text">Isabel Hess &ndash; <span>Research Wiki</span></div>
+  </a>
+  <nav class="top-nav">
+    <a href="index.html"                    ><span class="nav-icon">🗺</span> Overview</a>
+    <a href="nebula.html"                   ><span class="nav-icon">🐟</span> Nebula</a>
+    <a href="energy.html"                   ><span class="nav-icon">⚡</span> Energy Harvesting</a>
+    <a href="side-projects.html"            ><span class="nav-icon">🔧</span> Side Projects</a>
+    <a href="publications.html" class="active"><span class="nav-icon">📄</span> Publications</a>
+    <a href="background.html"              ><span class="nav-icon">📚</span> Background</a>
+  </nav>
+  <div class="header-right">
+    <div class="global-search"><span>⌕</span><input type="text" id="globalSearch" placeholder="Search all pages…" autocomplete="off"></div>
+    <div class="header-meta">Publications</div>
+  </div>
+</header>
+
+<aside class="sidebar">
+  <div style="padding:0 12px 10px">
+    <div style="display:flex;align-items:center;gap:6px;padding:6px 9px;background:var(--bg);border:1px solid var(--border);border-radius:7px">
+      <span style="color:var(--text-faint);font-size:13px">⌕</span>
+      <input type="text" id="sidebarSearch" placeholder="Search this page…" autocomplete="off"
+        style="border:none;background:transparent;outline:none;color:var(--text);font-family:var(--font-mono);font-size:12px;width:100%">
+    </div>
+  </div>
+  <div class="no-results" id="sidebarNoResults">No matches</div>
+
+  <div class="nav-label">Publications</div>
+  <a href="#pubs-journal" class="active" data-terms="journal papers smart materials energies mdpi hasel nebula ehe doi published in progress"><span class="nav-dot" style="background:var(--purple)"></span>Journal Articles</a>
+  <a href="#pubs-conference"              data-terms="conference smasis robosoft 2022 2023 2024 2025 hardware competition award lausanne distributed muscles doi asme ieee"><span class="nav-dot" style="background:var(--purple)"></span>Conference Papers</a>
+  <a href="#pubs-other"                   data-terms="nrel megsrp senate robotics ai day workshop appointment outreach"><span class="nav-dot" style="background:var(--purple)"></span>Other Presentations</a>
+</aside>
+
+<main>
+  <div class="page-hero" style="background:linear-gradient(135deg, var(--surface) 0%, #f5f0fb 100%)">
+    <div class="page-hero-tag" style="color:var(--purple)">Scholarly Output</div>
+    <h1>Publications &amp; Presentations</h1>
+    <p>Journal articles, conference papers, hardware competition awards, and invited presentations. 2 journals published, 4 conference papers, 1 journal in progress.</p>
+  </div>
+
+  <div class="content">
+
+  <!-- STATS ROW -->
+  <div class="stats-row" style="margin-top:30px">
+    <div class="stat-box"><div class="stat-val" style="color:var(--green)">2</div><div class="stat-label">Journal articles published</div></div>
+    <div class="stat-box"><div class="stat-val" style="color:var(--accent)">1</div><div class="stat-label">Journal article in progress</div></div>
+    <div class="stat-box"><div class="stat-val" style="color:var(--green)">4</div><div class="stat-label">Conference papers</div></div>
+    <div class="stat-box"><div class="stat-val" style="color:var(--green)">1</div><div class="stat-label">Hardware competition awards (3rd place)</div></div>
+    <div class="stat-box"><div class="stat-val" style="color:var(--teal)">3</div><div class="stat-label">DOI links (clickable)</div></div>
+  </div>
+
+  <!-- JOURNAL ARTICLES -->
+  <section class="wiki-section" id="pubs-journal">
+    <div class="section-header"><div class="section-icon icon-purple">📰</div><div><div class="section-title">Journal Articles</div></div></div>
+    <div class="section-divider"></div>
+
+    <!-- SMS Journal -->
+    <div class="pub-entry">
+      <div class="pub-stripe" style="background:var(--green)"></div>
+      <div class="pub-meta">
+        <span class="pill pill-done">Published</span>
+        <span class="pub-venue">Smart Materials and Structures · IOP</span>
+      </div>
+      <div class="pub-title">Nebula: Kinematic Characterization and Electro-Hydro-Elastic Modeling of a Soft Robotic Fish</div>
+      <div class="pub-authors">I. Hess and P. Musgrave · Ref. SMS-116952</div>
+      <div class="pub-abstract" id="abs-sms">
+        Autonomous underwater vehicles (AUVs) with greater maneuverability, efficiency, and resiliency are needed to meet the challenges of exploring and monitoring the underwater world, so we look to underwater creatures to uncover what makes them such excellent swimmers. Bio- inspired, soft robots can combine the performance of biological swimming with the robustness of soft construction, where the ideal robot has a jointless, flexible body with embedded muscles just like real fish. In this paper, we present a continuously deformable robotic trout with embedded electro-hydraulic HASEL artificial muscles, experimentally characterize its swimming kinematics, and report a reduced order numerical model which predicts the robot fish's natural frequencies and mode shapes. We characterized the robot's 3D full body swimming kinematics while submerged in water with digital image correlation. The soft robot undergoes whole body bending in response to internal muscle actuation and yields kinematics comparable to biological trout. Tail beat velocity was measured at the first three observed natural frequencies with a maximum of 69 mm/s corresponding to a caudal fin trailing edge displacement of ±10 mm. We derive a beam-based fluid structure interaction (FSI) model which predicts swimming kinematics in response to embedded muscle forces and includes the effects of nonlinear vortex and convective forces on the robot's body. The nonlinear FSI model predicted the first three damped natural frequencies within 5% error and mode shapes which correlated with the experimental data. This paper contributes the design, fabrication, and characterization of a solid-state robotic trout featuring whole-body flexibility and embedded actuation through numerical modeling and experimental analysis.
+      </div>
+      <div class="pub-footer">
+        <button class="toggle-abstract" onclick="toggleAbstract('abs-sms', this)">Show abstract ▾</button>
+        <a href="https://doi.org/10.1088/1361-665X/ad79ce" class="doi" target="_blank">doi:10.1088/1361-665X/ad79ce</a>
+      </div>
+    </div>
+
+    <!-- Energies Journal -->
+    <div class="pub-entry">
+      <div class="pub-stripe" style="background:var(--green)"></div>
+      <div class="pub-meta">
+        <span class="pill pill-done">Published</span>
+        <span class="pub-venue">Energies · MDPI</span>
+      </div>
+      <div class="pub-title">Generating Electricity with HASELs and Their Mechanics</div>
+      <div class="pub-authors">I. Hess, B. Boren, S. Chamot, and P. Musgrave</div>
+      <div class="pub-abstract" id="abs-energies">
+        This study identifies hydraulically amplified self-healing electrostatic (HASEL) transducers as electricity generators, contrary to their conventional role as actuators. HASELs are soft, variable-capacitance transducers inspired by biological muscles which were developed to mimic the flexibility and functionality of natural muscle tissues. This research characterizes HASELs as generators by reversing their energy conversion mechanism—generating electricity through mechanical deformation. The study assesses the practical laboratory performance of HASELs by analytic modeling and experimental evaluation. Outcomes of the study include the following: (i) up to 2.5 mJ per cycle per 50 mm wide HASEL pouch of positive net energy generation in experimental testing—corresponding to an energy density of 2.0 mJ/cm^3; (ii) a maximum theoretical energy density of 4.2 mJ/cm^3; (iii) the electromechanical characteristics governing efficient conversion; and (iv) design considerations to enhance HASEL generator performance in future applications. This study broadens HASEL's applicability and utility as a multi-functional transducer for renewable energy and general adaptive electricity generation.
+      </div>
+      <div class="pub-footer">
+        <button class="toggle-abstract" onclick="toggleAbstract('abs-energies', this)">Show abstract ▾</button>
+        <a href="https://doi.org/10.3390/en17236130" class="doi" target="_blank">doi:10.3390/en17236130</a>
+      </div>
+    </div>
+
+    <!-- In Progress -->
+    <div class="pub-entry">
+      <div class="pub-stripe" style="background:var(--accent)"></div>
+      <div class="pub-meta">
+        <span class="pill pill-active">In Review</span>
+        <span class="pub-venue">Smart Materials &amp; Structures Emerging Leaders 2026 · IOP</span>
+      </div>
+      <div class="pub-title">HASEL Power Output and Frequency Dependence (working title)</div>
+      <div class="pub-authors">I. Lehenbauer, B. Boren, S. Chamot, and P. Musgrave</div>
+      <div class="pub-abstract" id="abs-paper2">
+        Bio-inspired, autonomous underwater vehicles (AUVs) are promising to achieve the agile and efficient locomotion of animals, but like all AUVs their endurance is limited by onboard energy storage. This study demonstrates electrical energy regeneration on a bio-inspired robotic fish using its existing artificial muscles to harvest energy from the environment, providing a path towards energy autonomy with minimal added size and weight. Using a robotic fish with hydraulically amplified, self-healing electrostatic (HASEL) artificial muscles and variable capacitance energy harvesting, we establish the role of frequency, strain, and phase on energy harvesting performance. Through cyclic axial testing of individual muscles, we demonstrate a linear increase in output power with increasing input frequency where the HASELs generated a peak power of 3.2 mW/cm^3 at 2 Hz. Further increases in frequency led to a reduction in generated power due to lower strain on the HASEL muscle and thus a decrease in capacitance change. We then experimentally demonstrate energy generation on a robotic fish-like prototype using HASEL muscles, and we visually capture the HASEL's change in capacitance during dynamic bending. Finally, we fully establish the role of frequency, strain, and phase on energy generation using a numerical kinematic model of a soft robotic fish with HASEL muscles. We show that maximum energy harvesting occurs (1) at the natural frequencies of the robotic fish, (2) when the HASEL muscles are spatially located at regions of maximum dynamic curvature, and (3) when the phase of the HASEL priming voltage is π/2 with respect to the stroke of the muscle, maximizing the capacitance change. By establishing the role of frequency, strain, and phase during HASEL energy harvesting, this study provides a framework for energy regeneration on robotic swimmers and flexible ocean wave energy converters with distributed energy converters.
+      </div>
+      <div class="pub-footer">
+        <button class="toggle-abstract" onclick="toggleAbstract('abs-paper2', this)">Show abstract ▾</button>
+        <span style="color:var(--text-faint);font-size:11px;font-family:var(--font-mono)">submitted February 2026</span>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- CONFERENCE PAPERS -->
+  <section class="wiki-section" id="pubs-conference">
+    <div class="section-header"><div class="section-icon icon-purple">🏛</div><div><div class="section-title">Conference Papers</div></div></div>
+    <div class="section-divider"></div>
+
+    <!-- SMASIS 2022 -->
+    <div class="pub-entry">
+      <div class="pub-stripe" style="background:var(--green)"></div>
+      <div class="pub-meta">
+        <span class="pill pill-done">Published</span>
+        <span class="pub-venue">ASME SMASIS 2022 · Dearborn, Michigan · Sept 12–14 2024</span>
+      </div>
+      <div class="pub-title">The Role of Compliance in Generating Traveling Waves on a Bio-Inspired Flexible Propulsor</div>
+      <div class="pub-authors">I. Hess and P. Musgrave</div>
+      <div class="pub-abstract" id="abs-smasis22">
+        Body and caudal ﬁn ﬁsh, like tuna and eels, are classiﬁed on a scale of kinematic modes from thuuniform to anguilliform. What differentiates the thuuniform and anguilliform motion is the relative dominance of standing and traveling waves in their body's deformation. The anguilliform swimming mode, where a traveling wave is propagated along the body length, is desirable for certain applications of bio-inspired underwater vehicles because of its low-speed efﬁciency and high maneuverability. In nature, anguilliform swimmers are more ﬂexible and slender than thuuniform ﬁshes. The aim of this paper is to study the relationship between body ﬂexibility, ﬂuid damping, and induced swimming kinematics in a bio-inspired propulsor. A nonlinear electro-hydro-elastic model was derived and a parametric study was conducted over different body stiffness. To ﬁnd the relative strength of standing and traveling waves in the body deformation the steady-state response was analyzed using orthogonal decomposition. Traveling wave quality was dependent on excitation frequency and the presence of nonlinear ﬂuid damping. A peak in traveling wave quality was induced at the natural frequencies due to signiﬁcant nonlinear ﬂuid loading. At the ﬁrst couple natural frequencies, ﬂexible beams had greater overall traveling wave quality, but stiffer beams exhibited a stronger nonlinear response. While future work is needed to examine the high frequency response of ﬂexible structures, the frequency band which maximizes traveling wave quality may identify an optimal regime for passively ﬂexible bio-inspired propulsors.
+      </div>
+      <div class="pub-footer">
+        <button class="toggle-abstract" onclick="toggleAbstract('abs-smasis22', this)">Show abstract ▾</button>
+        <a href="https://doi.org/10.1115/SMASIS2022-88529" class="doi" target="_blank">doi:10.1115/SMASIS2022-88529</a>
+      </div>
+    </div>
+
+    <!-- SMASIS 2023 -->
+    <div class="pub-entry">
+      <div class="pub-stripe" style="background:var(--green)"></div>
+      <div class="pub-meta">
+        <span class="pill pill-done">Published</span>
+        <span class="pub-venue">ASME SMASIS 2023 · Austin, Texas · Sept 11–13 2024</span>
+        <span class="pill" style="background:#fff8e8;color:#8a5000;border:1px solid #e0c070">🏆 3rd Place Hardware Competition</span>
+      </div>
+      <div class="pub-title">Nebula: A Flexible, Solid-State Swimming Robot Enabled by HASEL Actuators</div>
+      <div class="pub-authors">I. Hess and P. Musgrave · Paper #110945</div>
+      <div class="pub-abstract" id="abs-smasis23">
+        After millions of years of evolution, ocean creatures have mastered the underwater environment. In human interactions with the underwater world, unmanned underwater vehicles (UUVs) are needed for applications where human divers are impractical or at great risk such as exploration of remote locations or the deep ocean. Current propeller-driven UUVs stand to gain greater efficiency and maneuverability by mimicking underwater creatures. Biological fish outperform the state-of-the-art bio-inspired UUVs, but it has been shown in hydrofoil literature that tailoring chordwise flexibility can improve swimming performance across several metrics. In this paper we aim to integrate chordwise flexibility and integrated soft actuators to demonstrate a soft robotic propulsor which better mimics the structure and capability of fish. Inspired by cartilaginous body-and-caudal-fin (BCF) fishes like sharks, we built a soft robotic fish from compliant components with embedded smart actuators. The robot's body is made of a 3D printed rubber skeleton and electro-hydraulic contracting-pouch actuators embedded in compliant silicone. The actuators used were hydraulically-amplified, self-healing electrostatic (HASEL) artificial muscles placed in an antagonistic configuration across the spine to produce lateral body contractions. We tailored the stiffness distribution of the body to passively induce BCF swimming kinematics at the caudal fin in response to actuator contractions in the main body. In this paper, the design and fabrication of the soft robot is described and its underwater structural dynamics are characterized with experimental testing in quiescent water. Full-body high speed videos of the robotic fish were taken at varying actuator input voltage and frequency to quantify its dynamic response. We show that the robot's compliant body deforms like a biological fish and is capable of tail-beat speeds up to 73 mm/s. This flexible, jointless design with embedded actuation is a step toward fieldable, lifelike bio-inspired UUVs for the future of underwater robotics.
+      </div>
+      <div class="pub-footer">
+        <button class="toggle-abstract" onclick="toggleAbstract('abs-smasis23', this)">Show abstract ▾</button>
+        <a href="https://doi.org/10.1115/SMASIS2023-110945" class="doi" target="_blank">doi:10.1115/SMASIS2023-110945</a>
+      </div>
+    </div>
+
+    <!-- SMASIS 2024 -->
+    <div class="pub-entry">
+      <div class="pub-stripe" style="background:var(--green)"></div>
+      <div class="pub-meta">
+        <span class="pill pill-done">Presented</span>
+        <span class="pub-venue">ASME SMASIS 2024 · Atlanta, Georgia · Sept 9–11 2024</span>
+      </div>
+      <div class="pub-title">Investigating HASEL Transducers for Underwater Energy Generation</div>
+      <div class="pub-authors">I. Hess and P. Musgrave</div>
+      <div class="pub-abstract" id="abs-smasis24">
+        In our transition to renewable energy sources to meet the rising global demand, ocean wave energy is under-utilized compared to wind and solar because of the engineering challenges from the harsh ocean environment. Ocean wave energy converters (WECs) are systems which convert the mechanical energy of ocean waves into electrical energy. Traditional WECs use power take-off systems where a large load is concentrated at a single location for energy conversion such as a rotary electric generator. Concentrated loads coupled with the requirement to operate at the highest sea states means that conventional WECs are over-designed, heavy, and expensive. Replacing heavy, rigid components with flexible smart materials can reduce the size, weight, and cost of WECs while enabling distributed energy conversion along the body to eliminate concentrated loads (Collins, et. al., 2021). FlexWECs are a developing area of research where a WEC is made from networks of small transducers which create a compliant structure that converts mechanical to electrical energy (Boren, 2021). Several transducers have been proposed for flexWECs including rotary generators and dielectric elastomers, but further research is needed to identify the best transducers and system-level designs. 
+        Hydraulically-amplified, self-healing electrostatic (HASELs) (Rothemund, et. al., 2021) are a new type of dielectric fluid transducer which shows promise for flexWECs. HASELs are sealed pouches of dielectric fluid in an inextensible polymer membrane with flexible electrodes painted on the outside. Their working principle is variable capacitance, whereby holding constant voltage and physically changing capacitance, HASEL's charge can be changed. The benefits of HASELs as electrostatic generators are that they leverage hydraulic amplification of force/displacement, are capable of self-healing from dielectric breakdown, and are structurally compliant and stackable. Furthermore, their self- contained pouch of fluid eliminates viscous losses which pumping dielectric fluid transducers are subject to. Despite these benefits, the energy harvesting performance of HASEL transducers is unexplored. 
+        We aim to identify the energy density and conversion efficiency of HASELs through analytic modeling and experimental efforts. Through analytic modeling we found that the energy generated per cycle depends on the pouch geometry and the square of priming voltage. The maximum theoretical electrical energy generated by a single pouch with the geometry of a commercially available HASEL (Artimus Robotics, C-5015-02-01-B-ACAC-50-096) is 0.98 mJ per cycle, with an energy density of 1.36 mJ/cm^3 normalized by fluid volume. We plan to experimentally determine the energy harvesting performance of HASELs by examining the relationship between cyclic loading, voltage priming, and electric energy produced. Cyclic loading is representative of the loads experienced by a flexWEC due to ocean waves. We propose the following energy harvesting loop for contracting Peano-HASEL transducers: (1-2) Priming and capacitance increase: starting from rest, apply a priming voltage to the HASEL which causes the electrodes to zip together and capacitance to increase. (2-3) Generation: hold at constant voltage and apply a tensile force to unzip the HASEL, decreasing capaci- tance and causing charge to leave the HASEL and flow through a load. (3-4) Discharge: While under tension, discharge the HASEL to zero voltage. (4-1) Reset: Release tension force while discharged. 
+        The independent variables involved are the magnitude and frequency of the applied force and the priming voltage applied across its electrodes, which influence the HASEL's instantaneous capacitance and charge. To find the relationships between these variables, we will measure the energy generated per cycle while applying cyclic loads in universal testing machine. We expect that the practical energy harvested per cycle will be less than the theoretical maximum due to charge leakage losses and because capacitance increase occurs during voltage priming. Additionally, we expect the amount of energy generated and the conversion efficiency will increase with cycle frequency, which has been shown for other dielectric fluid generators (Duranti, et. al., 2017). This work will evaluate the efficacy of HASEL transducers as electrostatic generators to lay the foundation for HASEL adoption in flexWECs. Further research could investigate other energy harvesting processes, such as a constant-charge process, and evaluate system-level performance of HASELs in a particular arrangement within a flexWEC.
+      </div>
+      <div class="pub-footer">
+        <button class="toggle-abstract" onclick="toggleAbstract('abs-smasis24', this)">Show abstract ▾</button>
+      </div>
+    </div>
+
+    <!-- RoboSoft 2025 -->
+    <div class="pub-entry">
+      <div class="pub-stripe" style="background:var(--green)"></div>
+      <div class="pub-meta">
+        <span class="pill pill-done">Published</span>
+        <span class="pub-venue">IEEE RoboSoft 2025 · Lausanne, Switzerland · Apr 23–26 2025</span>
+      </div>
+      <div class="pub-title">Improving Swimming Performance in Soft Robotic Fish with Distributed Muscles and Embedded Kinematic Sensing</div>
+      <div class="pub-authors">K. Soto, I. Hess, B. Schrader, S. He, and P. Musgrave</div>
+      <div class="pub-abstract" id="abs-robosoft">
+        Bio-inspired underwater vehicles could yield improved efficiency, maneuverability, and environmental compatibility over conventional propeller-driven underwater vehicles. However, to realize underwater vehicles that harness the swimming performance of biology, there is a need for soft robotic swimmers with both distributed muscles and kinematic feedback. This study presents the design and swimming performance of a soft robotic fish with independently controllable muscles and embedded kinematic sensing distributed along the body. The soft swimming robot consists of an interior flexible spine, three axially distributed sets of HASEL artificial muscles, embedded strain gauges, a streamlined silicone body, and off-board electronics. In a fixed configuration, the soft robot generates a maximum thrust of 7.9 mN when excited near its first resonant frequency (2 Hz) with synchronized antagonistic actuation of all muscles. When excited near its second resonant frequency (8 Hz), synchronized muscle actuation generates 5.0 mN of thrust. By introducing a sequential phase offset into the muscle actuation, the thrust at the second resonant frequency increases to 7.2 mN, a 44% increase from simple antagonistic activation. The sequential muscle activation improves the thrust by increasing 1) the tail-beat velocity and 2) traveling wave content in the swimming kinematics by four times. Further, the second resonant frequency (8 Hz) generates nearly as much thrust as the first resonance (2 Hz) while requiring only ≈ 25% of the tail displacement, indicating that higher resonant frequencies have benefits for swimming in confined environments where a smaller kinematic envelope is necessary. These results demonstrate the performance benefits of independently controllable muscles and distributed kinematic sensing, and this type of soft robotic swimmer provides a platform to address the open challenge of sensorimotor control.
+      </div>
+      <div class="pub-footer">
+        <button class="toggle-abstract" onclick="toggleAbstract('abs-robosoft', this)">Show abstract ▾</button>
+        <a href="https://doi.org/10.1109/RoboSoft63089.2025.11020876" class="doi" target="_blank">doi:10.1109/RoboSoft63089.2025.11020876</a>
+      </div>
+    </div>
+
+    <!-- SMASIS 2025 -->
+    <div class="pub-entry">
+      <div class="pub-stripe" style="background:var(--green)"></div>
+      <div class="pub-meta">
+        <span class="pill pill-done">Presented</span>
+        <span class="pub-venue">ASME SMASIS 2025 · St. Louis, Missouri · Sept 8–10 2025</span>
+      </div>
+      <div class="pub-title">Energy Harvesting with HASEL Transducers in a Robotic Trout</div>
+      <div class="pub-authors">I. Hess, P. Musgrave, and collaborators</div>
+      <div class="pub-abstract" id="abs-smasis25">
+        Bio-inspired robots aspire to the adaptable and multi-functional systems seen in nature. Biological fish are effective swimmers who can also use their bodies to absorb energy from oncoming flow to reduce their energy expenditure. A robotic platform which can generate electricity is useful for long-term missions where harvested energy can be stored for later propulsion, or reduces the energy storage requirements for onboard sensors and communication equipment. Inspired by this ability to absorb kinetic energy from their surroundings, we investigate electricity generation onboard a robotic fish using hydraulically amplified, self-healing electrostatic (HASEL) transducers as multi-functional artificial muscles and electrostatic generators. HASELs are soft variable capacitors with similar power density to biological muscle and have been shown to generate up to 2.0 mJ cm$^{-3}$ of electrical energy per cycle with a theoretical maximum of 4.2 mJ cm$^{-3}$. As electrostatic generators, they require high voltage priming electricity which is amplified during the generation cycle through the conversion of mechanical work into electricity, and the excess is transferred to storage or used to power a load. While the energy output of HASELs has been identified, the relationship between power output, frequency of excitation and their placement on a bending energy harvesting structure is unexplored.
+        In this study, we establish the power output of HASELs for energy harvesting onboard a soft robotic fish with internal HASEL transducers undergoing base excitation to mimic the effect of oncoming oscillatory flow. The power output is a function of the mechanical stretch the HASEL experiences due to elastic bending of the fish body and the frequency of excitation. We determine the input-normalized power output from heaving (transverse) and yawing (rotational) base excitation at the head from 0 to 20 Hz though coupled fluid-structure finite element modeling. The robot fish is modeled as an Euler-Bernoulli beam with strain rate damping and antagonistic HASEL patch transducers. The material is a layered composite of thermoplastic polyurethane (TPU) and silicone based on previous continuous robotic fish by the authors. Strain rate damping was included to account for viscoelastic losses in the soft materials. The HASEL transducers create a moment about the beam's neutral axis when contracted and are arranged in antagonistic sets laterally along the body. The HASELs are modeled with non-symmetric stiffness between tension and compression. Since the HASELs' pouches are made from inextensible polymer, they add considerable stiffness in tension but their soft pouches buckle under compression. The beam is surrounded by quiescent fluid modeled using the linearized Morison equation which accounts for added fluid mass and viscous damping. Since the frequency input excites different elastic deformation modes in the fish, it preferentially stretches certain HASEL muscle groups over others. This result could be used for active feedback in future studies, where actuators without high strain are not activated to save the priming energy. This work contributes a model of a robotic fish that is capable of electricity generation in addition to propulsion with no additional actuators, future work will validate this model with experimental results on a robotic fish.
+      </div>
+      <div class="pub-footer">
+        <button class="toggle-abstract" onclick="toggleAbstract('abs-smasis25', this)">Show abstract ▾</button>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- OTHER -->
+  <section class="wiki-section" id="pubs-other">
+    <div class="section-header"><div class="section-icon icon-purple">🎙</div><div><div class="section-title">Other Presentations &amp; Appointments</div></div></div>
+    <div class="section-divider"></div>
+    <div class="info-box">
+      <div class="annotation-row"><span class="ann-symbol" style="min-width:120px">NREL Workshop</span><span class="ann-name">NREL Intro Workshop — May 1-3, 2024. Presented HASEL EH preliminary results to NREL stakeholders.</span></div>
+      <div class="annotation-row"><span class="ann-symbol" style="min-width:120px">MEGSRP</span><span class="ann-name">NREL MEGSRP Appointment — Jan-Jul 2025, 6-month funded research appointment at NREL, Golden, CO. Cyclic HASEL EH platform and self-sensing development.</span></div>
+      <div class="annotation-row"><span class="ann-symbol" style="min-width:120px">Senate</span><span class="ann-name">Robotics &amp; AI Day at the Senate — April 30, 2024. Demonstrated Nebula to Congressional stakeholders.</span></div>
+    </div>
+  </section>
+
+  <div style="height:40px"></div>
+  </div>
+</main>
+
+<script src="shared.js"></script>
+<script>
+function toggleAbstract(id, btn) {
+  const el = document.getElementById(id);
+  const open = el.classList.toggle('open');
+  btn.textContent = open ? 'Hide abstract ▴' : 'Show abstract ▾';
+}
+</script>
+</body>
+</html>
